@@ -1,0 +1,37 @@
+
+services:
+  h_database:
+    image: mysql
+    container_name: h_database
+    environment:
+      MYSQL_ROOT_PASSWORD: ydG8x0hXClMVn63TGoLD
+      MYSQL_DATABASE: HospitalApp
+      MYSQL_USER: HospitalApp
+      MYSQL_PASSWORD: ydG8x0hXClMVn63TGoLD
+      MYSQL_TCP_PORT: 3309
+    ports:
+      - 3309:3309
+    volumes:
+     - HDatabaseData:/var/lib/mysql
+    networks:
+     - backendNetwork
+     
+  h_backend:
+    image: openjdk:21
+    container_name: h_backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - h_database
+    volumes:
+      - ./HospitalServer/target/HospitalServer-1.0.jar:/application.jar
+    command: ["java", "-jar", "application.jar"]
+    networks:
+      - backendNetwork
+
+volumes:
+  HDatabaseData:
+ 
+networks:
+  backendNetwork:
+ 
