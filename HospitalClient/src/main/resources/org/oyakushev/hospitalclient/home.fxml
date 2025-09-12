@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.HomeController">
+
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Profile">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Show Info" />
+              <MenuItem mnemonicParsing="false" text="Change Password" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Patients">
+            <content>
+              <VBox>
+                  <TextField fx:id="searchPatientField">
+                      <VBox.margin>
+                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                      </VBox.margin>
+                  </TextField>
+                  <HBox prefWidth="200.0">
+                      <children>
+                          <Button fx:id="searchPatientButton" mnemonicParsing="false" prefWidth="150.0" text="Search">
+                              <HBox.margin>
+                                  <Insets left="10.0" />
+                              </HBox.margin>
+                          </Button>
+
+                          <ComboBox fx:id="searchPatientByCombo" prefWidth="100.0">
+                              <HBox.margin>
+                                  <Insets left="10.0" />
+                              </HBox.margin>
+                          </ComboBox>
+
+                          <Button fx:id="newPatientButton" mnemonicParsing="false" onAction="#onActionNewPatientButton" prefWidth="150.0" text="New Patient">
+                              <HBox.margin>
+                                  <Insets left="10.0" />
+                              </HBox.margin>
+                          </Button>
+                      </children>
+                  </HBox>
+                  <TableView fx:id="patientTable">
+                      <columns>
+                          <TableColumn prefWidth="75.0" text="C1" />
+                          <TableColumn prefWidth="75.0" text="C2" />
+                      </columns>
+                      <VBox.margin>
+                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                      </VBox.margin>
+                  </TableView>
+              </VBox>
+            </content>
+          </Tab>
+          <Tab text="Personal">
+            <content>
+                <VBox>
+                    <TextField fx:id="searchPersonalField">
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                    </TextField>
+                    <HBox prefWidth="200.0">
+                        <children>
+                            <Button fx:id="searchPersonalButton" mnemonicParsing="false" prefWidth="150.0" text="Search">
+                                <HBox.margin>
+                                    <Insets left="10.0" />
+                                </HBox.margin>
+                            </Button>
+
+                            <ComboBox fx:id="searchPersonalByCombo" prefWidth="100.0">
+                                <HBox.margin>
+                                    <Insets left="10.0" />
+                                </HBox.margin>
+                            </ComboBox>
+
+                            <Button fx:id="newPersonalButton" mnemonicParsing="false" onAction="#onActionNewPersonalButton" prefWidth="150.0" text="New Personal">
+                                <HBox.margin>
+                                    <Insets left="10.0" />
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                    <TableView fx:id="personalTable">
+                        <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                        </columns>
+                        <VBox.margin>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </VBox.margin>
+                    </TableView>
+                </VBox>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+
+
+</VBox>
