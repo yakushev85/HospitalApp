@@ -10,12 +10,6 @@ import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.AuthRequest;
 import org.oyakushev.hospitalclient.dto.AuthResponse;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.Duration;
-
 public class LoginController {
     public TextField loginUsername;
     public PasswordField loginPassword;
