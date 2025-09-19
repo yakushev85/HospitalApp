@@ -1,9 +1,7 @@
 package org.oyakushev.hospitalclient.api;
 
 import com.google.gson.Gson;
-import org.oyakushev.hospitalclient.dto.AuthRequest;
-import org.oyakushev.hospitalclient.dto.AuthResponse;
-import org.oyakushev.hospitalclient.dto.MessageResponse;
+import org.oyakushev.hospitalclient.dto.*;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,9 +17,11 @@ public enum ApiClient {
     public static final String BASE_URL = "http://localhost:8080/";
     public static final Duration DEFAULT_TIMEOUT = Duration.ofMinutes(2);
 
+    private static final String AUTH_HEADER = "Authorization";
+
     private final HttpClient httpClient;
     private final Gson gson;
-    private String apiToken;
+    private Optional<String> authHeaderValue = Optional.empty();
 
     ApiClient() {
         httpClient = HttpClient.newBuilder()
@@ -39,19 +39,28 @@ public enum ApiClient {
                 .timeout(DEFAULT_TIMEOUT)
                 .header("Content-Type", "application/json");
 
-        if (apiToken != null) {
-            resBuilder.header("Authorization", "Bearer "+apiToken);
+        if (authHeaderValue.isPresent()) {
+            resBuilder.header("Authorization", authHeaderValue.orElseThrow());
         }
 
         return resBuilder;
     }
 
     private Optional<String> sendAndGetBody(HttpRequest request) throws IOException, InterruptedException {
+        System.out.println("\nRequest\n" + request.method() + "\n" + request.uri().toString()
+                + "\nAuth header: " + request.headers().firstValue(AUTH_HEADER));
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.print("\nResponse\n" + response.statusCode()
+                + "\nAuth header: " + response.headers().firstValue(AUTH_HEADER) +
+                "\n" + response.body());
 
-        if (response != null && response.body() != null && response.statusCode() == 200) {
+        if (response.body() != null && response.statusCode() == 200) {
+            if (response.headers().firstValue(AUTH_HEADER).isPresent()) {
+                authHeaderValue = response.headers().firstValue(AUTH_HEADER);
+            }
+
             return Optional.of(response.body());
-        } else if (response != null && response.statusCode() == 400) {
+        } else if (response.statusCode() == 400) {
             // TODO cast error response to exception
             return Optional.empty();
         } else {
@@ -82,6 +91,34 @@ public enum ApiClient {
             throw new IOException("Wrong username or password.");
         } else {
             return Optional.of(gson.fromJson(responseBody.orElseThrow(), AuthResponse.class));
+        }
+    }
+
+    public Optional<PagePatients> getPatients(int pageNumber, int pageSize) throws IOException, InterruptedException {
+        HttpRequest request = preBuildRequest("api/patients?page=" + pageNumber + "&size=" + pageSize)
+                .GET()
+                .build();
+
+        Optional<String> responseBody = sendAndGetBody(request);
+
+        if (responseBody.isEmpty()) {
+            throw new IOException("Can't fetch patients.");
+        } else {
+            return Optional.of(gson.fromJson(responseBody.orElseThrow(), PagePatients.class));
+        }
+    }
+
+    public Optional<PatientResponse> createPatient(PatientRequest patientRequest) throws IOException, InterruptedException {
+        HttpRequest request = preBuildRequest("api/patients")
+                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(patientRequest)))
+                .build();
+
+        Optional<String> responseBody = sendAndGetBody(request);
+
+        if (responseBody.isEmpty()) {
+            throw new IOException("Doesn't receive body from created patient.");
+        } else {
+            return Optional.of(gson.fromJson(responseBody.orElseThrow(), PatientResponse.class));
         }
     }
 }

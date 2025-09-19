@@ -6,10 +6,11 @@ module org.oyakushev.hospital.client.hospitalclient {
     requires javafx.graphics;
     requires java.net.http;
     requires com.google.gson;
+    requires java.sql;
 
     opens org.oyakushev.hospitalclient to javafx.fxml;
     exports org.oyakushev.hospitalclient;
     exports org.oyakushev.hospitalclient.controller;
     opens org.oyakushev.hospitalclient.controller to javafx.fxml;
-    opens org.oyakushev.hospitalclient.dto to com.google.gson;
+    opens org.oyakushev.hospitalclient.dto to com.google.gson, javafx.base;
 }

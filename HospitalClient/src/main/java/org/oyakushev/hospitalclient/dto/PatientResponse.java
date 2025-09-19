@@ -1,14 +1,24 @@
 package org.oyakushev.hospitalclient.dto;
 
-public class PatientRequest {
+import java.util.Date;
+
+public class PatientResponse {
+    private Long id;
     private String firstName;
     private String lastName;
-    private String dob;
-
+    private Date dob;
     private String address;
-
     private Double height;
     private Double weight;
+    private Date createdAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -26,11 +36,11 @@ public class PatientRequest {
         this.lastName = lastName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
@@ -56,5 +66,13 @@ public class PatientRequest {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
