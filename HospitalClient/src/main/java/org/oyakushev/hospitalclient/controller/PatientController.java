@@ -10,7 +10,6 @@ import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.PatientRequest;
 import org.oyakushev.hospitalclient.dto.PatientResponse;
 
-import java.sql.Date;
 import java.time.format.DateTimeFormatter;
 
 public class PatientController {

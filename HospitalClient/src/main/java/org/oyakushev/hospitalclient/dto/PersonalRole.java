@@ -23,4 +23,12 @@ public enum PersonalRole {
             default -> throw new IllegalArgumentException("Can't find role for index = " + index);
         };
     }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }

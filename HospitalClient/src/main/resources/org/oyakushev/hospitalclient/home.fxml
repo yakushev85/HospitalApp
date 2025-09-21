@@ -2,9 +2,9 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox alignment="CENTER" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.HomeController">
 
    <children>
@@ -43,22 +43,22 @@
                       <columns>
                           <TableColumn prefWidth="75.0" text="ID">
                               <cellValueFactory>
-                                  <PropertyValueFactory property="id"/>
+                                  <PropertyValueFactory property="id" />
                               </cellValueFactory>
                           </TableColumn>
                           <TableColumn prefWidth="150.0" text="First Name">
                               <cellValueFactory>
-                                  <PropertyValueFactory property="firstName"/>
+                                  <PropertyValueFactory property="firstName" />
                               </cellValueFactory>
                           </TableColumn>
                           <TableColumn prefWidth="150.0" text="Last Name">
                               <cellValueFactory>
-                                  <PropertyValueFactory property="lastName"/>
+                                  <PropertyValueFactory property="lastName" />
                               </cellValueFactory>
                           </TableColumn>
                           <TableColumn prefWidth="300.0" text="Address">
                               <cellValueFactory>
-                                  <PropertyValueFactory property="address"/>
+                                  <PropertyValueFactory property="address" />
                               </cellValueFactory>
                           </TableColumn>
                       </columns>
@@ -79,7 +79,7 @@
                               </HBox.margin>
                           </Button>
 
-                          <Label alignment="CENTER" contentDisplay="CENTER" text="1 of 1 page">
+                          <Label fx:id="patientsPageLabel" alignment="CENTER" contentDisplay="CENTER" text="1 of 1 page">
                               <HBox.margin>
                                   <Insets left="10.0" top="4.0" />
                               </HBox.margin>
@@ -100,7 +100,7 @@
               </VBox>
             </content>
           </Tab>
-          <Tab text="Personal">
+          <Tab text="Personal" fx:id="personalTab">
             <content>
                 <VBox>
                     <TextField fx:id="searchPersonalField">
@@ -131,8 +131,26 @@
                     </HBox>
                     <TableView fx:id="personalTable">
                         <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn prefWidth="75.0" text="ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="150.0" text="Username">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="username" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="150.0" text="First Name">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="firstName" />
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn prefWidth="150.0" text="Last Name">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="lastName" />
+                                </cellValueFactory>
+                            </TableColumn>
                         </columns>
                         <VBox.margin>
                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -151,7 +169,7 @@
                                 </HBox.margin>
                             </Button>
 
-                            <Label text="1 of 1 page">
+                            <Label fx:id="personalPageLabel" text="1 of 1 page">
                                 <HBox.margin>
                                     <Insets left="10.0" top="4.0" />
                                 </HBox.margin>
@@ -177,18 +195,18 @@
                     <HBox>
                         <Label text="Username">
                             <HBox.margin>
-                                <Insets top="10.0" left="10.0" />
+                                <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Label>
                         <TextField text="admin">
                             <HBox.margin>
-                                <Insets top="10.0" left="10.0" />
+                                <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </TextField>
                     </HBox>
                     <Button mnemonicParsing="false" prefWidth="150.0" text="Change Password">
                         <VBox.margin>
-                            <Insets top="10.0" left="10.0" />
+                            <Insets left="10.0" top="10.0" />
                         </VBox.margin>
                     </Button>
                 </VBox>

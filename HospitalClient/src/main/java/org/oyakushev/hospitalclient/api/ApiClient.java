@@ -121,4 +121,32 @@ public enum ApiClient {
             return Optional.of(gson.fromJson(responseBody.orElseThrow(), PatientResponse.class));
         }
     }
+
+    public Optional<PagePersonal> getPersonal(int pageNumber, int pageSize) throws IOException, InterruptedException {
+        HttpRequest request = preBuildRequest("api/personal?page=" + pageNumber + "&size=" + pageSize)
+                .GET()
+                .build();
+
+        Optional<String> responseBody = sendAndGetBody(request);
+
+        if (responseBody.isEmpty()) {
+            throw new IOException("Can't fetch personal.");
+        } else {
+            return Optional.of(gson.fromJson(responseBody.orElseThrow(), PagePersonal.class));
+        }
+    }
+
+    public Optional<PersonalResponse> createPersonal(PersonalRequest personalRequest) throws IOException, InterruptedException {
+        HttpRequest httpRequest = preBuildRequest("api/personal")
+                .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(personalRequest)))
+                .build();
+
+        Optional<String> responseBody = sendAndGetBody(httpRequest);
+
+        if (responseBody.isEmpty()) {
+            throw new IOException("Doesn't receive body from created personal.");
+        } else {
+            return Optional.of(gson.fromJson(responseBody.orElseThrow(), PersonalResponse.class));
+        }
+    }
 }
