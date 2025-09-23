@@ -91,11 +91,11 @@ public class HomeController {
     }
 
     public void onActionNewPatientButton(ActionEvent actionEvent) {
-        HospitalApplication.getInstance().gotoPatientWindow();
+        HospitalApplication.getInstance().gotoNewPatientWindow();
     }
 
     public void onActionNewPersonalButton(ActionEvent actionEvent) {
-        HospitalApplication.getInstance().gotoPersonalWindow();
+        HospitalApplication.getInstance().gotoNewPersonalWindow();
     }
 
     private void updatePatientPages(PagePatients pagePatients) {

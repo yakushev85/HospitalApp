@@ -1,6 +1,5 @@
 package org.oyakushev.hospitalclient;
 
-import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -48,6 +47,14 @@ public class HospitalApplication extends Application {
         replaceSceneContent("home.fxml");
     }
 
+    public void gotoNewPatientWindow() {
+        replaceSceneContent("new_patient.fxml");
+    }
+
+    public void gotoNewPersonalWindow() {
+        replaceSceneContent("new_personal.fxml");
+    }
+
     public void gotoPatientWindow() {
         replaceSceneContent("patient.fxml");
     }
@@ -55,4 +62,5 @@ public class HospitalApplication extends Application {
     public void gotoPersonalWindow() {
         replaceSceneContent("personal.fxml");
     }
+
 }
