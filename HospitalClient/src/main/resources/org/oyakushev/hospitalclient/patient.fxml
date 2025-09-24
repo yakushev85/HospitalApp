@@ -1,14 +1,509 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.oyakushev.hospitalclient.controller.PatientController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.PatientController">
+    <TabPane>
+        <Tab text="General">
+            <VBox>
+                <Label text="#ID" textAlignment="CENTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="40.0" top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <Separator>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Separator>
+                <HBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="First Name">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="firstNameField" prefWidth="200">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
 
+                <HBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Last Name">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="lastNameField" prefWidth="200">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+
+                <HBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Birthday">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="birthdayPicker">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </DatePicker>
+                    </children>
+                </HBox>
+
+                <HBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Address">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="addressField" prefWidth="400">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+
+                <HBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Height">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="heightField">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+
+                <HBox>
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Weight">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="weightField">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+
+                <Separator>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Separator>
+
+                <HBox>
+                    <children>
+                        <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" onAction="#onSaveAction" prefWidth="150" text="Save">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" onAction="#onCancelAction" prefWidth="150" text="Cancel">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Blood">
+            <VBox>
+                <HBox prefWidth="200.0">
+                    <children>
+
+                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Blood Record">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView>
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Hemoglobin">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="hemoglobin" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Hematocrit">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="firstName" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="MCV">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="meanCorpuscularVolume" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="MCH">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="meanCorpuscularHemoglobin" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Created At">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="createdAt" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </TableView>
+                <HBox>
+                    <children>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Label text="1 of 1 page">
+                            <HBox.margin>
+                                <Insets left="10.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
+
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Examination">
+            <VBox>
+                <HBox prefWidth="200.0">
+                    <children>
+
+                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Examination Record">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView>
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="200.0" text="Description">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="description" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="200.0" text="Diagnosis">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="diagnosis" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Created At">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="createdAt" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </TableView>
+                <HBox>
+                    <children>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Label text="1 of 1 page">
+                            <HBox.margin>
+                                <Insets left="10.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
+
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Medical Test">
+            <VBox>
+                <HBox prefWidth="200.0">
+                    <children>
+
+                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Medical Test Record">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView>
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="300.0" text="Description">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="description" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Result">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="result" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Created At">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="createdAt" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </TableView>
+                <HBox>
+                    <children>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Label text="1 of 1 page">
+                            <HBox.margin>
+                                <Insets left="10.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
+
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Pressure">
+            <VBox>
+                <HBox prefWidth="200.0">
+                    <children>
+
+                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Pressure Record">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView>
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="150.0" text="Systolic">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="systolic" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="150.0" text="Diastolic">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="diastolic" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Created At">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="createdAt" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </TableView>
+                <HBox>
+                    <children>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Label text="1 of 1 page">
+                            <HBox.margin>
+                                <Insets left="10.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
+
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </VBox>
+        </Tab>
+        <Tab text="Vaccination">
+            <VBox>
+                <HBox prefWidth="200.0">
+                    <children>
+
+                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Vaccination Record">
+                            <HBox.margin>
+                                <Insets left="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <TableView>
+                    <columns>
+                        <TableColumn prefWidth="75.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="300.0" text="description">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="description" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Effective Time">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="effectiveTime" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn prefWidth="100.0" text="Created At">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="createdAt" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </TableView>
+                <HBox>
+                    <children>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Label text="1 of 1 page">
+                            <HBox.margin>
+                                <Insets left="10.0" top="4.0" />
+                            </HBox.margin>
+                        </Label>
+
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </VBox>
+        </Tab>
+    </TabPane>
 </VBox>

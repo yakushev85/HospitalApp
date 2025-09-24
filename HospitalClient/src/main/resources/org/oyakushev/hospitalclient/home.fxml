@@ -5,6 +5,7 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <VBox alignment="CENTER" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.HomeController">
 
    <children>
@@ -26,11 +27,11 @@
                               </HBox.margin>
                           </Button>
 
-                          <ComboBox fx:id="searchPatientByCombo" prefWidth="100.0">
+                          <Button fx:id="showPatientButton" prefWidth="100.0" text="Show">
                               <HBox.margin>
                                   <Insets left="10.0" />
                               </HBox.margin>
-                          </ComboBox>
+                          </Button>
 
                           <Button fx:id="newPatientButton" mnemonicParsing="false" onAction="#onActionNewPatientButton" prefWidth="150.0" text="New Patient">
                               <HBox.margin>
@@ -116,11 +117,11 @@
                                 </HBox.margin>
                             </Button>
 
-                            <ComboBox fx:id="searchPersonalByCombo" prefWidth="100.0">
+                            <Button fx:id="showPersonalButton" prefWidth="100.0" text="Show">
                                 <HBox.margin>
                                     <Insets left="10.0" />
                                 </HBox.margin>
-                            </ComboBox>
+                            </Button>
 
                             <Button fx:id="newPersonalButton" mnemonicParsing="false" onAction="#onActionNewPersonalButton" prefWidth="150.0" text="New Personal">
                                 <HBox.margin>
@@ -192,19 +193,30 @@
           </Tab>
             <Tab text="Profile">
                 <VBox>
-                    <HBox>
-                        <Label text="Username">
-                            <HBox.margin>
-                                <Insets left="10.0" top="10.0" />
-                            </HBox.margin>
-                        </Label>
-                        <TextField text="admin">
-                            <HBox.margin>
-                                <Insets left="10.0" top="10.0" />
-                            </HBox.margin>
-                        </TextField>
-                    </HBox>
+                    <Label text="admin" textAlignment="CENTER">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets left="40.0" top="10.0" />
+                        </VBox.margin>
+                    </Label>
+                    <Separator>
+                        <VBox.margin>
+                            <Insets top="10.0" />
+                        </VBox.margin>
+                    </Separator>
+                    <Label prefWidth="150.0" text="Role: Administrator">
+                        <VBox.margin>
+                            <Insets left="10.0" top="10.0" />
+                        </VBox.margin>
+                    </Label>
                     <Button mnemonicParsing="false" prefWidth="150.0" text="Change Password">
+                        <VBox.margin>
+                            <Insets left="10.0" top="10.0" />
+                        </VBox.margin>
+                    </Button>
+                    <Button mnemonicParsing="false" prefWidth="150.0" text="Logout">
                         <VBox.margin>
                             <Insets left="10.0" top="10.0" />
                         </VBox.margin>

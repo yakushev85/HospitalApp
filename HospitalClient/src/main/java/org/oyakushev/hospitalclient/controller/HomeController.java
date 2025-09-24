@@ -24,7 +24,7 @@ public class HomeController {
     // Patient tab
     public TextField searchPatientField;
     public Button searchPatientButton;
-    public ComboBox searchPatientByCombo;
+    public Button showPatientButton;
     public Button newPatientButton;
     public TableView<PatientResponse> patientTable;
     public Label patientsPageLabel;
@@ -33,7 +33,7 @@ public class HomeController {
     public Tab personalTab;
     public TextField searchPersonalField;
     public Button searchPersonalButton;
-    public ComboBox searchPersonalByCombo;
+    public Button showPersonalButton;
     public Button newPersonalButton;
     public TableView<PersonalResponse> personalTable;
     public Label personalPageLabel;
