@@ -48,7 +48,7 @@ public class HomeController {
 
             @Override
             protected PagePersonal call() throws Exception {
-                return ApiClient.Instance.getPersonal(pagePersonalNumber - 1, pagePersonalSize).orElseThrow();
+                return ApiClient.Instance.getPersonal(pagePersonalNumber - 1, pagePersonalSize);
             }
 
             @Override
@@ -71,7 +71,7 @@ public class HomeController {
         Task<PagePatients> loadPatientsTask = new Task<PagePatients>() {
             @Override
             protected PagePatients call() throws Exception {
-                return ApiClient.Instance.getPatients(pagePatientsNumber -1, pagePatientsSize).orElseThrow();
+                return ApiClient.Instance.getPatients(pagePatientsNumber -1, pagePatientsSize);
             }
 
             @Override

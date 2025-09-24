@@ -53,7 +53,7 @@ public class NewPersonalController {
         Task<PersonalResponse> savePersonalTask = new Task<> () {
             @Override
             protected PersonalResponse call() throws Exception {
-                return ApiClient.Instance.createPersonal(personalRequest).orElseThrow();
+                return ApiClient.Instance.createPersonal(personalRequest);
             }
 
             @Override

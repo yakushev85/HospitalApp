@@ -42,7 +42,7 @@ public class NewPatientController {
         Task<PatientResponse> savePatientTask = new Task<>() {
             @Override
             protected PatientResponse call() throws Exception {
-                return ApiClient.Instance.createPatient(patientRequest).orElseThrow();
+                return ApiClient.Instance.createPatient(patientRequest);
             }
 
             @Override

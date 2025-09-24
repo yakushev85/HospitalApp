@@ -29,7 +29,7 @@ public class LoginController {
         Task<AuthResponse> loginTask = new Task<>() {
             @Override
             protected AuthResponse call() throws Exception {
-                return ApiClient.Instance.loginUser(authRequest).orElseThrow();
+                return ApiClient.Instance.loginUser(authRequest);
             }
 
             @Override
