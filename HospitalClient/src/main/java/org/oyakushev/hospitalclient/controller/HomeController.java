@@ -7,19 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import org.oyakushev.hospitalclient.HospitalApplication;
 import org.oyakushev.hospitalclient.api.ApiClient;
-import org.oyakushev.hospitalclient.dto.PagePatients;
-import org.oyakushev.hospitalclient.dto.PagePersonal;
-import org.oyakushev.hospitalclient.dto.PatientResponse;
-import org.oyakushev.hospitalclient.dto.PersonalResponse;
+import org.oyakushev.hospitalclient.dto.*;
 
 public class HomeController {
-    private int pagePatientsNumber = 1;
-    private int pagePatientsSize = 10;
-    private int totalPatientsPages = 1;
-
-    private int pagePersonalNumber = 1;
-    private int pagePersonalSize = 10;
-    private int totalPersonalPages = 1;
+    public Button logoutButton;
 
     // Patient tab
     public TextField searchPatientField;
@@ -38,9 +29,30 @@ public class HomeController {
     public TableView<PersonalResponse> personalTable;
     public Label personalPageLabel;
 
+    public Label profileUsername;
+    public Label profileRole;
+
+    private int pagePatientsNumber = 1;
+    private int pagePatientsSize = 10;
+    private int totalPatientsPages = 1;
+
+    private int pagePersonalNumber = 1;
+    private int pagePersonalSize = 10;
+    private int totalPersonalPages = 1;
+
+
     public void initialize() {
         loadPatients();
-        loadPersonal();
+
+        if (HospitalApplication.getInstance().getPersonalRole().equals(PersonalRole.Admin)) {
+            personalTab.setDisable(false);
+            loadPersonal();
+        } else {
+            personalTab.setDisable(true);
+        }
+
+        profileRole.setText("Role: " + HospitalApplication.getInstance().getPersonalRole());
+        profileUsername.setText(HospitalApplication.getInstance().getUsername());
     }
 
     private void loadPersonal() {
@@ -112,4 +124,46 @@ public class HomeController {
         personalPageLabel.setText(pagePersonalNumber + " of " + totalPersonalPages + " page");
     }
 
+    public void onLogout(ActionEvent actionEvent) {
+        logout();
+    }
+
+    private void logout() {
+        Task<MessageResponse> logoutTask = new Task<> () {
+
+            @Override
+            protected MessageResponse call() throws Exception {
+                return ApiClient.Instance.logout();
+            }
+
+            @Override
+            protected void succeeded() {
+                HospitalApplication.getInstance().gotoLoginWindow();
+            }
+
+            @Override
+            protected void failed() {
+                System.err.println("Failed to load patients: " + getException().getMessage());
+                HospitalApplication.getInstance().gotoLoginWindow();
+            }
+        };
+
+        new Thread(logoutTask).start();
+    }
+
+    public void onChangePassword(ActionEvent actionEvent) {
+        HospitalApplication.getInstance().gotoChangePassWindow();
+    }
+
+    public void onPatientShow(ActionEvent actionEvent) {
+        Long patientId = patientTable.getSelectionModel().getSelectedItem().getId();
+        HospitalApplication.getInstance().setPatientId(patientId);
+        HospitalApplication.getInstance().gotoPatientWindow();
+    }
+
+    public void onPersonalShow(ActionEvent actionEvent) {
+        Long personalId = personalTable.getSelectionModel().getSelectedItem().getId();
+        HospitalApplication.getInstance().setPersonalId(personalId);
+        HospitalApplication.getInstance().gotoPersonalWindow();
+    }
 }

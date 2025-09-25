@@ -3,17 +3,26 @@ package org.oyakushev.hospitalclient.controller;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.oyakushev.hospitalclient.HospitalApplication;
 import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.AuthRequest;
 import org.oyakushev.hospitalclient.dto.AuthResponse;
+import org.oyakushev.hospitalclient.dto.MessageResponse;
+import org.oyakushev.hospitalclient.dto.PersonalRole;
 
 public class LoginController {
     public TextField loginUsername;
     public PasswordField loginPassword;
     public Button loginButton;
+    public Label errorText;
+
+    public void initialize() {
+        loginButton.setDisable(true);
+        checkStatus();
+    }
 
     public void onLoginButtonPressed(ActionEvent actionEvent) {
         loginButton.setDisable(true);
@@ -35,17 +44,42 @@ public class LoginController {
             @Override
             protected void succeeded() {
                 loginButton.setDisable(false);
+                String userRole = getValue().getRole();
 
+                HospitalApplication.getInstance().setPersonalRole(PersonalRole.valueOf(userRole));
+                HospitalApplication.getInstance().setUsername(getValue().getUsername());
                 HospitalApplication.getInstance().gotoHomeWindow();
             }
 
             @Override
             protected void failed() {
-                System.err.println("Failed to login: " + getException().getMessage());
+                errorText.setText(getException().getMessage());
                 loginButton.setDisable(false);
             }
         };
 
         new Thread(loginTask).start();
+    }
+
+    private void checkStatus() {
+        Task<MessageResponse> checkStatusTask = new Task<>() {
+            @Override
+            protected MessageResponse call() throws Exception {
+                return ApiClient.Instance.getStatus();
+            }
+
+            @Override
+            protected void succeeded() {
+                loginButton.setDisable(false);
+                loginButton.setDefaultButton(true);
+            }
+
+            @Override
+            protected void failed() {
+                errorText.setText("Server is not accessible.");
+            }
+        };
+
+        new Thread(checkStatusTask).start();
     }
 }

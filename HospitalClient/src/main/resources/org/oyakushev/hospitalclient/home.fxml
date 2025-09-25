@@ -4,8 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
 <VBox alignment="CENTER" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.HomeController">
 
    <children>
@@ -27,7 +27,7 @@
                               </HBox.margin>
                           </Button>
 
-                          <Button fx:id="showPatientButton" prefWidth="100.0" text="Show">
+                          <Button fx:id="showPatientButton" onAction="#onPatientShow" prefWidth="100.0" text="Show">
                               <HBox.margin>
                                   <Insets left="10.0" />
                               </HBox.margin>
@@ -101,7 +101,7 @@
               </VBox>
             </content>
           </Tab>
-          <Tab text="Personal" fx:id="personalTab">
+          <Tab fx:id="personalTab" text="Personal">
             <content>
                 <VBox>
                     <TextField fx:id="searchPersonalField">
@@ -117,7 +117,7 @@
                                 </HBox.margin>
                             </Button>
 
-                            <Button fx:id="showPersonalButton" prefWidth="100.0" text="Show">
+                            <Button fx:id="showPersonalButton" onAction="#onPersonalShow" prefWidth="100.0" text="Show">
                                 <HBox.margin>
                                     <Insets left="10.0" />
                                 </HBox.margin>
@@ -193,7 +193,7 @@
           </Tab>
             <Tab text="Profile">
                 <VBox>
-                    <Label text="admin" textAlignment="CENTER">
+                    <Label fx:id="profileUsername" text="admin" textAlignment="CENTER">
                         <font>
                             <Font size="20.0" />
                         </font>
@@ -206,17 +206,20 @@
                             <Insets top="10.0" />
                         </VBox.margin>
                     </Separator>
-                    <Label prefWidth="150.0" text="Role: Administrator">
+                    <Label fx:id="profileRole" prefWidth="150.0" text="Role: Admin">
+                        <font>
+                            <Font size="16.0" />
+                        </font>
                         <VBox.margin>
                             <Insets left="10.0" top="10.0" />
                         </VBox.margin>
                     </Label>
-                    <Button mnemonicParsing="false" prefWidth="150.0" text="Change Password">
+                    <Button mnemonicParsing="false" onAction="#onChangePassword" prefWidth="150.0" text="Change Password">
                         <VBox.margin>
                             <Insets left="10.0" top="10.0" />
                         </VBox.margin>
                     </Button>
-                    <Button mnemonicParsing="false" prefWidth="150.0" text="Logout">
+                    <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#onLogout" prefWidth="150.0" text="Logout">
                         <VBox.margin>
                             <Insets left="10.0" top="10.0" />
                         </VBox.margin>

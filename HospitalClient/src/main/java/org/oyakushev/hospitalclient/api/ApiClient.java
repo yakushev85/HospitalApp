@@ -85,7 +85,11 @@ public enum ApiClient {
                 .GET()
                 .build();
 
-        return gson.fromJson(sendAndGetBody(request).orElseThrow(), MessageResponse.class);
+        String bodyResponse = sendAndGetBody(request).orElseThrow();
+
+        authHeaderValue = null;
+
+        return gson.fromJson(bodyResponse, MessageResponse.class);
     }
 
     public MessageResponse changePassword(ChangePasswordRequest changePasswordRequest) throws IOException, InterruptedException {

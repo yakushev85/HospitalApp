@@ -4,11 +4,17 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.oyakushev.hospitalclient.dto.PersonalRole;
 
 import java.io.IOException;
 
 public class HospitalApplication extends Application {
     private Stage stage;
+
+    private String username;
+    private PersonalRole personalRole;
+    private Long patientId;
+    private Long personalId;
 
     private static HospitalApplication instance;
 
@@ -25,6 +31,38 @@ public class HospitalApplication extends Application {
         this.stage = stage;
 
         gotoLoginWindow();
+    }
+
+    public PersonalRole getPersonalRole() {
+        return personalRole;
+    }
+
+    public void setPersonalRole(PersonalRole personalRole) {
+        this.personalRole = personalRole;
+    }
+
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Long getPersonalId() {
+        return personalId;
+    }
+
+    public void setPersonalId(Long personalId) {
+        this.personalId = personalId;
     }
 
     private void replaceSceneContent(String fxmlFile) {
@@ -61,6 +99,10 @@ public class HospitalApplication extends Application {
 
     public void gotoPersonalWindow() {
         replaceSceneContent("personal.fxml");
+    }
+
+    public void gotoChangePassWindow() {
+        replaceSceneContent("change_pass.fxml");
     }
 
 }
