@@ -3,6 +3,8 @@ package org.oyakushev.hospitalclient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.oyakushev.hospitalclient.dto.PersonalRole;
 
@@ -59,6 +61,11 @@ public class HospitalApplication extends Application {
 
     public Long getPersonalId() {
         return personalId;
+    }
+
+    public void showAlertWarning(String msg) {
+        Alert alertWindow = new Alert(Alert.AlertType.WARNING,  msg, ButtonType.OK);
+        alertWindow.show();
     }
 
     public void setPersonalId(Long personalId) {

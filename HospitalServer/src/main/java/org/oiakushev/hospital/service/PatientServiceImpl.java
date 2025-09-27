@@ -1,5 +1,6 @@
 package org.oiakushev.hospital.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.oiakushev.hospital.dto.PatientRequest;
 import org.oiakushev.hospital.model.Patient;
 import org.oiakushev.hospital.repository.PageablePatientRepository;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -60,5 +64,50 @@ public class PatientServiceImpl implements PatientService {
         dummyParient.setWeight(90.1);
         dummyParient.setAddress("New York 25/3");
         patientRepository.save(dummyParient);
+    }
+
+    @Override
+    public List<Patient> search(String searchText) {
+        String searchTxtMod = searchText.trim();
+
+        boolean hasAlpha = false;
+        boolean hasDigit = false;
+        List<Patient> resultList = new ArrayList<>();
+
+        for (int i=0;i<searchTxtMod.length();i++) {
+            char c = searchTxtMod.charAt(i);
+
+            if (Character.isDigit(c)) {
+                hasDigit = true;
+            }
+
+            if (Character.isLetter(c)) {
+                hasAlpha = true;
+            }
+        }
+
+        if (hasAlpha && !hasDigit) {
+            // search by first and last name
+            String[] searchTxtArray = searchTxtMod.split("\\s");
+
+            if (searchTxtArray.length >= 2) {
+                String firstName = searchTxtArray[0];
+                String lastName = searchTxtArray[1];
+
+                return patientRepository.findByFirstNameAndLastName(firstName, lastName);
+            }
+        }
+
+        if (!hasAlpha && hasDigit) {
+            // search by id
+            patientRepository.findById(Long.parseLong(searchTxtMod)).ifPresent(resultList::add);
+        }
+
+        if (hasAlpha && hasDigit) {
+            // search address
+            return patientRepository.findByAddress(searchTxtMod);
+        }
+
+        return resultList;
     }
 }

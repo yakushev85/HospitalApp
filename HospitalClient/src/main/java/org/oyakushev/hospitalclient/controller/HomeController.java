@@ -11,6 +11,7 @@ import org.oyakushev.hospitalclient.dto.*;
 
 public class HomeController {
     public Button logoutButton;
+    public Button changePasswordButton;
 
     // Patient tab
     public TextField searchPatientField;
@@ -31,6 +32,16 @@ public class HomeController {
 
     public Label profileUsername;
     public Label profileRole;
+
+    public Button firstPersonalPageButton;
+    public Button previousPersonalPageButton;
+    public Button nextPersonalPageButton;
+    public Button lastPersonalPageButton;
+
+    public Button firstPatientPageButton;
+    public Button previousPatientPageButton;
+    public Button nextPatientPageButton;
+    public Button lastPatientPageButton;
 
     private int pagePatientsNumber = 1;
     private int pagePatientsSize = 10;
@@ -55,7 +66,31 @@ public class HomeController {
         profileUsername.setText(HospitalApplication.getInstance().getUsername());
     }
 
+    private void setControlsDisable(boolean isDisable) {
+        searchPatientButton.setDisable(isDisable);
+        showPatientButton.setDisable(isDisable);
+        newPersonalButton.setDisable((isDisable));
+
+        searchPersonalButton.setDisable(isDisable);
+        showPersonalButton.setDisable(isDisable);
+        newPersonalButton.setDisable(isDisable);
+
+        firstPersonalPageButton.setDisable(isDisable);
+        previousPersonalPageButton.setDisable(isDisable);
+        nextPersonalPageButton.setDisable(isDisable);
+        lastPersonalPageButton.setDisable(isDisable);
+
+        firstPatientPageButton.setDisable(isDisable);
+        previousPatientPageButton.setDisable(isDisable);
+        nextPatientPageButton.setDisable(isDisable);
+        lastPatientPageButton.setDisable(isDisable);
+
+        logoutButton.setDisable(isDisable);
+        changePasswordButton.setDisable(isDisable);
+    }
+
     private void loadPersonal() {
+        setControlsDisable(true);
         Task<PagePersonal> loadPersonalTask = new Task<>() {
 
             @Override
@@ -65,6 +100,7 @@ public class HomeController {
 
             @Override
             protected void succeeded() {
+                setControlsDisable(false);
                 ObservableList<PersonalResponse> data = FXCollections.observableArrayList(getValue().getContent());
                 personalTable.setItems(data);
                 updatePersonalPages(getValue());
@@ -72,6 +108,7 @@ public class HomeController {
 
             @Override
             protected void failed() {
+                setControlsDisable(false);
                 System.err.println("Failed to load personal: " + getException().getMessage());
             }
         };
@@ -80,6 +117,7 @@ public class HomeController {
     }
 
     private void loadPatients() {
+        setControlsDisable(true);
         Task<PagePatients> loadPatientsTask = new Task<PagePatients>() {
             @Override
             protected PagePatients call() throws Exception {
@@ -88,6 +126,7 @@ public class HomeController {
 
             @Override
             protected void succeeded() {
+                setControlsDisable(false);
                 ObservableList<PatientResponse> data = FXCollections.observableArrayList(getValue().getContent());
                 patientTable.setItems(data);
                 updatePatientPages(getValue());
@@ -95,6 +134,7 @@ public class HomeController {
 
             @Override
             protected void failed() {
+                setControlsDisable(false);
                 System.err.println("Failed to load patients: " + getException().getMessage());
             }
         };
@@ -114,13 +154,21 @@ public class HomeController {
         pagePatientsNumber = pagePatients.getNumber() + 1;
         totalPatientsPages = pagePatients.getTotalPages();
 
-        patientsPageLabel.setText(pagePatientsNumber + " of " + totalPatientsPages + " page");
+        updatePatientPageLabels();
     }
 
     private void updatePersonalPages(PagePersonal pagePersonal) {
         pagePersonalNumber = pagePersonal.getNumber() + 1;
         totalPersonalPages = pagePersonal.getTotalPages();
 
+        updatePersonalPageLabels();
+    }
+
+    private void updatePatientPageLabels() {
+        patientsPageLabel.setText(pagePatientsNumber + " of " + totalPatientsPages + " page");
+    }
+
+    private void updatePersonalPageLabels() {
         personalPageLabel.setText(pagePersonalNumber + " of " + totalPersonalPages + " page");
     }
 
@@ -129,6 +177,7 @@ public class HomeController {
     }
 
     private void logout() {
+        setControlsDisable(true);
         Task<MessageResponse> logoutTask = new Task<> () {
 
             @Override
@@ -138,11 +187,13 @@ public class HomeController {
 
             @Override
             protected void succeeded() {
+                setControlsDisable(false);
                 HospitalApplication.getInstance().gotoLoginWindow();
             }
 
             @Override
             protected void failed() {
+                setControlsDisable(false);
                 System.err.println("Failed to load patients: " + getException().getMessage());
                 HospitalApplication.getInstance().gotoLoginWindow();
             }
@@ -156,14 +207,170 @@ public class HomeController {
     }
 
     public void onPatientShow(ActionEvent actionEvent) {
-        Long patientId = patientTable.getSelectionModel().getSelectedItem().getId();
+        PatientResponse selectedItem = patientTable.getSelectionModel().getSelectedItem();
+
+        if (selectedItem == null) {
+            return;
+        }
+
+        Long patientId = selectedItem.getId();
         HospitalApplication.getInstance().setPatientId(patientId);
         HospitalApplication.getInstance().gotoPatientWindow();
     }
 
     public void onPersonalShow(ActionEvent actionEvent) {
-        Long personalId = personalTable.getSelectionModel().getSelectedItem().getId();
+        PersonalResponse selectedItem = personalTable.getSelectionModel().getSelectedItem();
+
+        if (selectedItem == null) {
+            return;
+        }
+
+        Long personalId = selectedItem.getId();
         HospitalApplication.getInstance().setPersonalId(personalId);
         HospitalApplication.getInstance().gotoPersonalWindow();
+    }
+
+    public void onSearchPatients(ActionEvent actionEvent) {
+        String searchText = searchPatientField.getText();
+        searchPatients(searchText);
+    }
+
+    private void searchPatients(String searchText) {
+        if (searchText.isEmpty()) {
+            loadPatients();
+            return;
+        }
+
+        setControlsDisable(true);
+        Task<SearchPatientResultsResponse> searchTask = new Task<> () {
+
+            @Override
+            protected SearchPatientResultsResponse call() throws Exception {
+                return ApiClient.Instance.searchPatients(searchText);
+            }
+
+            @Override
+            protected void succeeded() {
+                setControlsDisable(false);
+                ObservableList<PatientResponse> data = FXCollections.observableArrayList(getValue().getResults());
+                patientTable.setItems(data);
+                PagePatients pagePatients = new PagePatients();
+                pagePatients.setTotalPages(1);
+                pagePatients.setNumber(0);
+                updatePatientPages(pagePatients);
+            }
+
+            @Override
+            protected void failed() {
+                setControlsDisable(false);
+                System.err.println("Failed to search patients: " + getException().getMessage());
+            }
+        };
+
+        new Thread(searchTask).start();
+    }
+
+    public void onSearchPersonal(ActionEvent actionEvent) {
+        String searchText = searchPersonalField.getText();
+        searchPersonal(searchText);
+    }
+
+    private void searchPersonal(String searchText) {
+        if (searchText.isEmpty()) {
+            loadPersonal();
+            return;
+        }
+
+        setControlsDisable(true);
+        Task<SearchPersonalResultsResponse> searchTask = new Task<> () {
+
+            @Override
+            protected SearchPersonalResultsResponse call() throws Exception {
+                return ApiClient.Instance.searchPersonal(searchText);
+            }
+
+            @Override
+            protected void succeeded() {
+                setControlsDisable(false);
+                ObservableList<PersonalResponse> data = FXCollections.observableArrayList(getValue().getResults());
+                personalTable.setItems(data);
+                PagePersonal pagePersonal = new PagePersonal();
+                pagePersonal.setTotalPages(1);
+                pagePersonal.setNumber(0);
+                updatePersonalPages(pagePersonal);
+            }
+
+            @Override
+            protected void failed() {
+                setControlsDisable(false);
+                System.err.println("Failed to search patients: " + getException().getMessage());
+            }
+        };
+
+        new Thread(searchTask).start();
+    }
+
+    public void onFirstPatientPage(ActionEvent actionEvent) {
+        if (pagePatientsNumber > 1) {
+            pagePatientsNumber = 1;
+
+            loadPatients();
+        }
+    }
+
+    public void onPreviousPatientPage(ActionEvent actionEvent) {
+        if (pagePatientsNumber > 1) {
+            pagePatientsNumber--;
+
+            loadPatients();
+        }
+    }
+
+    public void onNextPatientPage(ActionEvent actionEvent) {
+        if (pagePatientsNumber < totalPatientsPages) {
+            pagePatientsNumber++;
+
+            loadPatients();
+        }
+    }
+
+    public void onLastPatientPage(ActionEvent actionEvent) {
+        if (pagePatientsNumber < totalPatientsPages) {
+            pagePatientsNumber = totalPatientsPages;
+
+            loadPatients();
+        }
+    }
+
+    public void onFirstPersonalPage(ActionEvent actionEvent) {
+        if (pagePersonalNumber > 1) {
+            pagePersonalNumber = 1;
+
+            loadPersonal();
+        }
+    }
+
+    public void onPreviousPersonalPage(ActionEvent actionEvent) {
+        if (pagePersonalNumber > 1) {
+            pagePersonalNumber--;
+
+            loadPersonal();
+        }
+    }
+
+    public void onNextPersonalPage(ActionEvent actionEvent) {
+        if (pagePersonalNumber < totalPersonalPages) {
+            pagePersonalNumber++;
+
+            loadPersonal();
+        }
+    }
+
+    public void onLastPersonalPage(ActionEvent actionEvent) {
+        if (pagePersonalNumber < totalPersonalPages) {
+            pagePersonalNumber = totalPersonalPages;
+
+            loadPersonal();
+        }
     }
 }

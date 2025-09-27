@@ -17,6 +17,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PersonalServiceImpl implements PersonalService {
     @Autowired
@@ -154,5 +157,51 @@ public class PersonalServiceImpl implements PersonalService {
         personal.setPassword(passwordEncoder.encode(changePasswordRequest.getNewPassword()));
 
         personalRepository.save(personal);
+    }
+
+    @Override
+    public List<Personal> search(String searchText) {
+
+        String searchTxtMod = searchText.trim();
+
+        boolean hasAlpha = false;
+        boolean hasDigit = false;
+        List<Personal> resultList = new ArrayList<>();
+
+        for (int i=0;i<searchTxtMod.length();i++) {
+            char c = searchTxtMod.charAt(i);
+
+            if (Character.isDigit(c)) {
+                hasDigit = true;
+            }
+
+            if (Character.isLetter(c)) {
+                hasAlpha = true;
+            }
+        }
+
+        if (hasAlpha && !hasDigit) {
+            // search by first and last name
+            String[] searchTxtArray = searchTxtMod.split("\\s");
+
+            if (searchTxtArray.length >= 2) {
+                String firstName = searchTxtArray[0];
+                String lastName = searchTxtArray[1];
+
+                return personalRepository.findByFirstNameAndLastName(firstName, lastName);
+            }
+        }
+
+        if (!hasAlpha && hasDigit) {
+            // search by id and phone
+            List<Personal> searchedByPhone = personalRepository.findByPhone(searchTxtMod);
+            if (searchedByPhone.isEmpty()) {
+                personalRepository.findById(Long.parseLong(searchTxtMod)).ifPresent(resultList::add);
+            } else {
+                return searchedByPhone;
+            }
+        }
+
+        return resultList;
     }
 }

@@ -21,7 +21,7 @@
                   </TextField>
                   <HBox prefWidth="200.0">
                       <children>
-                          <Button fx:id="searchPatientButton" mnemonicParsing="false" prefWidth="150.0" text="Search">
+                          <Button fx:id="searchPatientButton" mnemonicParsing="false" onAction="#onSearchPatients" prefWidth="150.0" text="Search">
                               <HBox.margin>
                                   <Insets left="10.0" />
                               </HBox.margin>
@@ -69,12 +69,12 @@
                   </TableView>
                   <HBox>
                       <children>
-                          <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                          <Button fx:id="firstPatientPageButton" mnemonicParsing="false" onAction="#onFirstPatientPage" prefWidth="50.0" text="|&lt;">
                               <HBox.margin>
                                   <Insets bottom="10.0" left="10.0" />
                               </HBox.margin>
                           </Button>
-                          <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                          <Button fx:id="previousPatientPageButton" mnemonicParsing="false" onAction="#onPreviousPatientPage" prefWidth="50.0" text="&lt;">
                               <HBox.margin>
                                   <Insets bottom="10.0" left="10.0" />
                               </HBox.margin>
@@ -86,12 +86,12 @@
                               </HBox.margin>
                           </Label>
 
-                          <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                          <Button fx:id="nextPatientPageButton" mnemonicParsing="false" onAction="#onNextPatientPage" prefWidth="50.0" text="&gt;">
                               <HBox.margin>
                                   <Insets bottom="10.0" left="10.0" />
                               </HBox.margin>
                           </Button>
-                          <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                          <Button fx:id="lastPatientPageButton" mnemonicParsing="false" onAction="#onLastPatientPage" prefWidth="50.0" text="&gt;|">
                               <HBox.margin>
                                   <Insets bottom="10.0" left="10.0" />
                               </HBox.margin>
@@ -111,7 +111,7 @@
                     </TextField>
                     <HBox prefWidth="200.0">
                         <children>
-                            <Button fx:id="searchPersonalButton" mnemonicParsing="false" prefWidth="150.0" text="Search">
+                            <Button fx:id="searchPersonalButton" mnemonicParsing="false" onAction="#onSearchPersonal" prefWidth="150.0" text="Search">
                                 <HBox.margin>
                                     <Insets left="10.0" />
                                 </HBox.margin>
@@ -159,12 +159,12 @@
                     </TableView>
                     <HBox>
                         <children>
-                            <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                            <Button fx:id="firstPersonalPageButton" mnemonicParsing="false" onAction="#onFirstPersonalPage" prefWidth="50.0" text="|&lt;">
                                 <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" />
                                 </HBox.margin>
                             </Button>
-                            <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                            <Button fx:id="previousPersonalPageButton" mnemonicParsing="false" onAction="#onPreviousPersonalPage" prefWidth="50.0" text="&lt;">
                                 <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" />
                                 </HBox.margin>
@@ -176,12 +176,12 @@
                                 </HBox.margin>
                             </Label>
 
-                            <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                            <Button fx:id="nextPersonalPageButton" mnemonicParsing="false" onAction="#onNextPersonalPage" prefWidth="50.0" text="&gt;">
                                 <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" />
                                 </HBox.margin>
                             </Button>
-                            <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                            <Button fx:id="lastPersonalPageButton" mnemonicParsing="false" onAction="#onLastPersonalPage" prefWidth="50.0" text="&gt;|">
                                 <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" />
                                 </HBox.margin>
@@ -214,7 +214,7 @@
                             <Insets left="10.0" top="10.0" />
                         </VBox.margin>
                     </Label>
-                    <Button mnemonicParsing="false" onAction="#onChangePassword" prefWidth="150.0" text="Change Password">
+                    <Button fx:id="changePasswordButton" mnemonicParsing="false" onAction="#onChangePassword" prefWidth="150.0" text="Change Password">
                         <VBox.margin>
                             <Insets left="10.0" top="10.0" />
                         </VBox.margin>

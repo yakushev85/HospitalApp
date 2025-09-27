@@ -2,6 +2,7 @@ package org.oiakushev.hospital.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.oiakushev.hospital.dto.PatientRequest;
+import org.oiakushev.hospital.dto.SearchResultsResponse;
 import org.oiakushev.hospital.model.Patient;
 import org.oiakushev.hospital.model.PersonalRole;
 import org.oiakushev.hospital.service.PatientService;
@@ -32,6 +33,13 @@ public class PatientController {
     public Patient getItemById(@PathVariable Long id, HttpServletRequest request) {
         personalService.auth(request, PersonalRole.Viewer);
         return patientService.getById(id);
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public SearchResultsResponse<Patient> search(@RequestParam(name="text") String searchText,
+                                                 HttpServletRequest request) {
+        personalService.auth(request, PersonalRole.Viewer);
+        return new SearchResultsResponse<>(patientService.search(searchText));
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)

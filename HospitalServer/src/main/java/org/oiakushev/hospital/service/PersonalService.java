@@ -11,6 +11,9 @@ import org.oiakushev.hospital.model.PersonalRole;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface PersonalService {
     Page<Personal> getAll(Pageable pageable);
     Personal getById(Long id);
@@ -23,4 +26,5 @@ public interface PersonalService {
     Personal auth(HttpServletRequest request, PersonalRole personalRole);
     AuthResponse loginUser(AuthRequest authRequest, HttpServletRequest request, HttpServletResponse response);
     void changePassword(ChangePasswordRequest changePasswordRequest, HttpServletRequest request);
+    List<Personal> search(String searchText);
 }

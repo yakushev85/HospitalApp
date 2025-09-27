@@ -5,9 +5,11 @@ import org.oyakushev.hospitalclient.dto.*;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Optional;
 
@@ -93,7 +95,7 @@ public enum ApiClient {
     }
 
     public MessageResponse changePassword(ChangePasswordRequest changePasswordRequest) throws IOException, InterruptedException {
-        HttpRequest request = preBuildRequest("api/login")
+        HttpRequest request = preBuildRequest("api/password")
                 .POST(HttpRequest.BodyPublishers.ofString(gson.toJson(changePasswordRequest)))
                 .build();
 
@@ -106,6 +108,14 @@ public enum ApiClient {
                 .build();
 
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PagePatients.class);
+    }
+
+    public SearchPatientResultsResponse searchPatients(String text) throws IOException, InterruptedException {
+        HttpRequest request = preBuildRequest("api/patients/search?text=" + URLEncoder.encode(text, StandardCharsets.UTF_8))
+                .GET()
+                .build();
+
+        return gson.fromJson(sendAndGetBody(request).orElseThrow(), SearchPatientResultsResponse.class);
     }
 
     public PatientResponse createPatient(PatientRequest patientRequest) throws IOException, InterruptedException {
@@ -138,6 +148,14 @@ public enum ApiClient {
                 .build();
 
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PagePersonal.class);
+    }
+
+    public SearchPersonalResultsResponse searchPersonal(String text) throws IOException, InterruptedException {
+        HttpRequest request = preBuildRequest("api/personal/search?text=" + URLEncoder.encode(text, StandardCharsets.UTF_8))
+                .GET()
+                .build();
+
+        return gson.fromJson(sendAndGetBody(request).orElseThrow(), SearchPersonalResultsResponse.class);
     }
 
     public PersonalResponse createPersonal(PersonalRequest personalRequest) throws IOException, InterruptedException {

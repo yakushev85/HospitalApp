@@ -3,12 +3,15 @@ package org.oiakushev.hospital.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.oiakushev.hospital.dto.PersonalRequest;
 import org.oiakushev.hospital.dto.PersonalResponse;
+import org.oiakushev.hospital.dto.SearchResultsResponse;
 import org.oiakushev.hospital.model.PersonalRole;
 import org.oiakushev.hospital.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/personal")
@@ -28,6 +31,14 @@ public class PersonalController {
     public PersonalResponse getItemById(@PathVariable Long id, HttpServletRequest request) {
         personalService.auth(request, PersonalRole.Admin);
         return PersonalResponse.fromPersonal(personalService.getById(id));
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public SearchResultsResponse<PersonalResponse> search(@RequestParam(name="text") String searchText,
+                                                          HttpServletRequest request) {
+        personalService.auth(request, PersonalRole.Admin);
+        return new SearchResultsResponse<>(personalService.search(searchText).stream()
+                .map(PersonalResponse::fromPersonal).toList());
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
