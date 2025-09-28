@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b354ee7-b7b3-4f2e-9b2b-03c4b7e05a85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/SearchResultsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/api/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/api/ApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/PersonalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/PersonalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/repository/PatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/repository/PatientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/repository/PersonalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/repository/PersonalRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PatientServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/PersonalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/PersonalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/personal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/personal.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
