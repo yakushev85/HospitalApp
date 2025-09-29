@@ -52,7 +52,7 @@ public enum ApiClient {
         System.out.println("\nRequest\n" + request.method() + "\n" + request.uri().toString()
                 + "\nAuth header: " + request.headers().firstValue(AUTH_HEADER));
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.print("\nResponse\n" + response.statusCode()
+        System.out.println("\nResponse\n" + response.statusCode()
                 + "\nAuth header: " + response.headers().firstValue(AUTH_HEADER) +
                 "\n" + response.body());
 

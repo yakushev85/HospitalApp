@@ -38,7 +38,48 @@ public class NewPersonalController {
         cancelButton.setDisable(value);
     }
 
+    private boolean validateData() {
+        if (usernameField.getText().isEmpty()) {
+            HospitalApplication.getInstance().showAlertWarning("Username can't be empty.");
+            return false;
+        }
+
+        if (passwordField.getText().isEmpty()) {
+            HospitalApplication.getInstance().showAlertWarning("Password can't be empty.");
+            return false;
+        }
+
+        if (firstNameField.getText().isEmpty()) {
+            HospitalApplication.getInstance().showAlertWarning("First name can't be empty.");
+            return false;
+        }
+
+        if (lastNameField.getText().isEmpty()) {
+            HospitalApplication.getInstance().showAlertWarning("Last name can't be empty.");
+            return false;
+        }
+
+        String phoneValue = phoneField.getText();
+        if (phoneValue.isEmpty()) {
+            HospitalApplication.getInstance().showAlertWarning("Phone can't be empty.");
+            return false;
+        }
+
+        for (int i=0;i<phoneValue.length();i++) {
+            if (!Character.isDigit(phoneValue.charAt(i))) {
+                HospitalApplication.getInstance().showAlertWarning("Phone should contains digits only.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public void onSaveAction(ActionEvent actionEvent) {
+        if (!validateData()) {
+            return;
+        }
+
         setControlsDisable(true);
 
         final PersonalRequest personalRequest = new PersonalRequest();
@@ -48,7 +89,8 @@ public class NewPersonalController {
         personalRequest.setLastName(lastNameField.getText());
         personalRequest.setPhone(phoneField.getText());
         personalRequest.setDescription(descriptionArea.getText());
-        personalRequest.setRole(2);
+        PersonalRole personalRole = PersonalRole.valueOf(roleCombo.getValue());
+        personalRequest.setRole(personalRole.getIndex());
 
         Task<PersonalResponse> savePersonalTask = new Task<> () {
             @Override
