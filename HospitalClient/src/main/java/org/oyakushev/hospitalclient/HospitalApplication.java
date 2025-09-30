@@ -112,4 +112,23 @@ public class HospitalApplication extends Application {
         replaceSceneContent("change_pass.fxml");
     }
 
+    public void gotoNewBloodWindow() {
+        replaceSceneContent("new_blood.fxml");
+    }
+
+    public void gotoNewExaminationWindow() {
+        replaceSceneContent("new_examination.fxml");
+    }
+
+    public void gotoNewMedicalTestWindow() {
+        replaceSceneContent("new_medical_test.fxml");
+    }
+
+    public void gotoNewPressureWindow() {
+        replaceSceneContent("new_pressure.fxml");
+    }
+
+    public void gotoNewVaccinationWindow() {
+        replaceSceneContent("new_vaccination.fxml");
+    }
 }

@@ -9,5 +9,4 @@ public class BloodRequest {
     private Double meanCorpuscularVolume;
     private Double meanCorpuscularHemoglobin;
     private Long patientId;
-    private Long personalId;
 }

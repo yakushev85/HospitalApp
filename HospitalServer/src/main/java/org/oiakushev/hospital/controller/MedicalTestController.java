@@ -37,8 +37,7 @@ public class MedicalTestController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public MedicalTestResponse add(@RequestBody MedicalTestRequest medicalTestRequest, HttpServletRequest request) {
-        personalService.auth(request, PersonalRole.Doctor);
-        return medicalTestService.add(medicalTestRequest);
+        return medicalTestService.add(medicalTestRequest, personalService.auth(request, PersonalRole.Doctor).getId());
     }
 
     @RequestMapping(value = "/patients/{id}", method = RequestMethod.GET)

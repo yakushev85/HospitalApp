@@ -28,13 +28,13 @@ public class PressureServiceImpl implements PressureService {
     }
 
     @Override
-    public PressureResponse add(PressureRequest pressureRequest) {
+    public PressureResponse add(PressureRequest pressureRequest, Long personalId) {
         Pressure pressure = new Pressure();
 
         pressure.setSystolic(pressureRequest.getSystolic());
         pressure.setDiastolic(pressureRequest.getDiastolic());
         pressure.setPatient(patientRepository.findById(pressureRequest.getPatientId()).orElseThrow());
-        pressure.setPersonal(personalRepository.findById(pressureRequest.getPersonalId()).orElseThrow());
+        pressure.setPersonal(personalRepository.findById(personalId).orElseThrow());
 
         return PressureResponse.from(pressureRepository.save(pressure));
     }

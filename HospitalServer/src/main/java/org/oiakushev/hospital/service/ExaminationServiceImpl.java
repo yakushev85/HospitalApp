@@ -28,14 +28,14 @@ public class ExaminationServiceImpl implements ExaminationService {
     }
 
     @Override
-    public ExaminationResponse add(ExaminationRequest examinationRequest) {
+    public ExaminationResponse add(ExaminationRequest examinationRequest, Long personalId) {
         Examination examination = new Examination();
 
         examination.setDescription(examinationRequest.getDescription());
         examination.setDiagnosis(examinationRequest.getDiagnosis());
 
         examination.setPatient(patientRepository.findById(examinationRequest.getPatientId()).orElseThrow());
-        examination.setPersonal(personalRepository.findById(examinationRequest.getPersonalId()).orElseThrow());
+        examination.setPersonal(personalRepository.findById(personalId).orElseThrow());
 
         return ExaminationResponse.from(examinationRepository.save(examination));
     }

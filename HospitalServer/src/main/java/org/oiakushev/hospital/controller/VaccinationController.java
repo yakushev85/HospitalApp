@@ -37,8 +37,7 @@ public class VaccinationController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public VaccinationResponse add(@RequestBody VaccinationRequest vaccinationRequest, HttpServletRequest request) {
-        personalService.auth(request, PersonalRole.Nurse);
-        return vaccinationService.add(vaccinationRequest);
+        return vaccinationService.add(vaccinationRequest, personalService.auth(request, PersonalRole.Nurse).getId());
     }
 
     @RequestMapping(value = "/patients/{id}", method = RequestMethod.GET)

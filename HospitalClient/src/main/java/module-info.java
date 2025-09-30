@@ -7,6 +7,7 @@ module org.oyakushev.hospital.client.hospitalclient {
     requires java.net.http;
     requires com.google.gson;
     requires java.sql;
+    requires javafx.base;
 
     opens org.oyakushev.hospitalclient to javafx.fxml;
     exports org.oyakushev.hospitalclient;

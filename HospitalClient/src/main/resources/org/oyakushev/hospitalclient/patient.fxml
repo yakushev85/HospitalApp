@@ -135,19 +135,19 @@
                 </HBox>
             </VBox>
         </Tab>
-        <Tab text="Blood">
+        <Tab fx:id="bloodTab" onSelectionChanged="#onBloodTabSelectionChanged" text="Blood">
             <VBox>
                 <HBox prefWidth="200.0">
                     <children>
 
-                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Blood Record">
+                        <Button fx:id="newBloodButton" mnemonicParsing="false" onAction="#onNewBlood" prefWidth="200.0" text="New Blood Record">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <TableView>
+                <TableView fx:id="bloodTableView">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -161,7 +161,7 @@
                         </TableColumn>
                         <TableColumn prefWidth="100.0" text="Hematocrit">
                             <cellValueFactory>
-                                <PropertyValueFactory property="firstName" />
+                                <PropertyValueFactory property="hematocrit" />
                             </cellValueFactory>
                         </TableColumn>
                         <TableColumn prefWidth="100.0" text="MCV">
@@ -186,29 +186,29 @@
                 </TableView>
                 <HBox>
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                        <Button mnemonicParsing="false" onAction="#onFirstBloodPage" prefWidth="50.0" text="|&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                        <Button mnemonicParsing="false" onAction="#onPreviousBloodPage" prefWidth="50.0" text="&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
 
-                        <Label text="1 of 1 page">
+                        <Label fx:id="bloodPageLabel" text="1 of 1 page">
                             <HBox.margin>
                                 <Insets left="10.0" top="4.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                        <Button mnemonicParsing="false" onAction="#onNextBloodPage" prefWidth="50.0" text="&gt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                        <Button mnemonicParsing="false" onAction="#onLastBloodPage" prefWidth="50.0" text="&gt;|">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
@@ -217,19 +217,19 @@
                 </HBox>
             </VBox>
         </Tab>
-        <Tab text="Examination">
+        <Tab fx:id="examinationTab" onSelectionChanged="#onExaminationTabSelectionChanged" text="Examination">
             <VBox>
                 <HBox prefWidth="200.0">
                     <children>
 
-                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Examination Record">
+                        <Button fx:id="newExaminationButton" mnemonicParsing="false" onAction="#onNewExamination" prefWidth="200.0" text="New Examination Record">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <TableView>
+                <TableView fx:id="examinationTableView">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -258,29 +258,29 @@
                 </TableView>
                 <HBox>
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                        <Button mnemonicParsing="false" onAction="#onFirstExaminationPage" prefWidth="50.0" text="|&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                        <Button mnemonicParsing="false" onAction="#onPreviousExaminationPage" prefWidth="50.0" text="&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
 
-                        <Label text="1 of 1 page">
+                        <Label fx:id="examinationPageLabel" text="1 of 1 page">
                             <HBox.margin>
                                 <Insets left="10.0" top="4.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                        <Button mnemonicParsing="false" onAction="#onNextExaminationPage" prefWidth="50.0" text="&gt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                        <Button mnemonicParsing="false" onAction="#onLastExaminationPage" prefWidth="50.0" text="&gt;|">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
@@ -289,19 +289,19 @@
                 </HBox>
             </VBox>
         </Tab>
-        <Tab text="Medical Test">
+        <Tab fx:id="medicalTestTab" onSelectionChanged="#onMedicalTestTabSelectionChanged" text="Medical Test">
             <VBox>
                 <HBox prefWidth="200.0">
                     <children>
 
-                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Medical Test Record">
+                        <Button fx:id="newMedicalTestButton" mnemonicParsing="false" onAction="#onNewMedicalTest" prefWidth="200.0" text="New Medical Test Record">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <TableView>
+                <TableView fx:id="medicalTestTableView">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -330,29 +330,29 @@
                 </TableView>
                 <HBox>
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                        <Button mnemonicParsing="false" onAction="#onFirstMedicalTestPage" prefWidth="50.0" text="|&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                        <Button mnemonicParsing="false" onAction="#onPreviousMedicalTestPage" prefWidth="50.0" text="&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
 
-                        <Label text="1 of 1 page">
+                        <Label fx:id="medicalTestPageLabel" text="1 of 1 page">
                             <HBox.margin>
                                 <Insets left="10.0" top="4.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                        <Button mnemonicParsing="false" onAction="#onNextMedicalTestPage" prefWidth="50.0" text="&gt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                        <Button mnemonicParsing="false" onAction="#onLastMedicalTestPage" prefWidth="50.0" text="&gt;|">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
@@ -361,19 +361,19 @@
                 </HBox>
             </VBox>
         </Tab>
-        <Tab text="Pressure">
+        <Tab fx:id="pressureTab" onSelectionChanged="#onPressureTabSelectionChanged" text="Pressure">
             <VBox>
                 <HBox prefWidth="200.0">
                     <children>
 
-                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Pressure Record">
+                        <Button fx:id="newPressureButton" mnemonicParsing="false" onAction="#onNewPressure" prefWidth="200.0" text="New Pressure Record">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <TableView>
+                <TableView fx:id="pressureTableView">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -402,29 +402,29 @@
                 </TableView>
                 <HBox>
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                        <Button mnemonicParsing="false" onAction="#onFirstPressurePage" prefWidth="50.0" text="|&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                        <Button mnemonicParsing="false" onAction="#onPreviousPressurePage" prefWidth="50.0" text="&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
 
-                        <Label text="1 of 1 page">
+                        <Label fx:id="pressurePageLabel" text="1 of 1 page">
                             <HBox.margin>
                                 <Insets left="10.0" top="4.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                        <Button mnemonicParsing="false" onAction="#onNextPressurePage" prefWidth="50.0" text="&gt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                        <Button mnemonicParsing="false" onAction="#onLastPressurePage" prefWidth="50.0" text="&gt;|">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
@@ -433,19 +433,19 @@
                 </HBox>
             </VBox>
         </Tab>
-        <Tab text="Vaccination">
+        <Tab fx:id="vaccinationTab" onSelectionChanged="#onVaccinationTabSelectionChanged" text="Vaccination">
             <VBox>
                 <HBox prefWidth="200.0">
                     <children>
 
-                        <Button mnemonicParsing="false" prefWidth="200.0" text="New Vaccination Record">
+                        <Button fx:id="newVaccinationButton" mnemonicParsing="false" onAction="#onNewVaccination" prefWidth="200.0" text="New Vaccination Record">
                             <HBox.margin>
                                 <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                 </HBox>
-                <TableView>
+                <TableView fx:id="vaccinationTableView">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -474,29 +474,29 @@
                 </TableView>
                 <HBox>
                     <children>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="|&lt;">
+                        <Button mnemonicParsing="false" onAction="#onFirstVaccinationPage" prefWidth="50.0" text="|&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&lt;">
+                        <Button mnemonicParsing="false" onAction="#onPreviousVaccinationPage" prefWidth="50.0" text="&lt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
 
-                        <Label text="1 of 1 page">
+                        <Label fx:id="vaccinationPageLabel" text="1 of 1 page">
                             <HBox.margin>
                                 <Insets left="10.0" top="4.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;">
+                        <Button mnemonicParsing="false" onAction="#onNextVaccinationPage" prefWidth="50.0" text="&gt;">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefWidth="50.0" text="&gt;|">
+                        <Button mnemonicParsing="false" onAction="#onLastVaccinationPage" prefWidth="50.0" text="&gt;|">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </HBox.margin>

@@ -28,13 +28,13 @@ public class MedicalTestServiceImpl implements MedicalTestService {
     }
 
     @Override
-    public MedicalTestResponse add(MedicalTestRequest medicalTestRequest) {
+    public MedicalTestResponse add(MedicalTestRequest medicalTestRequest, Long personalId) {
         MedicalTest medicalTest = new MedicalTest();
 
         medicalTest.setDescription(medicalTestRequest.getDescription());
-        medicalTest.setResult(medicalTest.getResult());
+        medicalTest.setResult(medicalTestRequest.getResult());
         medicalTest.setPatient(patientRepository.findById(medicalTestRequest.getPatientId()).orElseThrow());
-        medicalTest.setPersonal(personalRepository.findById(medicalTestRequest.getPersonalId()).orElseThrow());
+        medicalTest.setPersonal(personalRepository.findById(personalId).orElseThrow());
 
         return MedicalTestResponse.from(medicalTestRepository.save(medicalTest));
     }

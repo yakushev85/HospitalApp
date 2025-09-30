@@ -5,8 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b354ee7-b7b3-4f2e-9b2b-03c4b7e05a85" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/PersonalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/PersonalController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/personal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/personal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/HospitalApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/HospitalApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/api/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/api/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewBloodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewBloodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewExaminationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewExaminationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewMedicalTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewMedicalTestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewPressureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewPressureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewVaccinationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/NewVaccinationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/BloodRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/BloodRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/ExaminationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/ExaminationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/MedicalTestRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/MedicalTestRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/PagePressure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/PagePressure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/PressureRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/PressureRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/VaccinationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/java/org/oyakushev/hospitalclient/dto/VaccinationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_blood.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_blood.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_examintation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_examination.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_medical_test.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_medical_test.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_pressure.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_pressure.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_vaccination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/new_vaccination.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/patient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalClient/src/main/resources/org/oyakushev/hospitalclient/patient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/BloodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/BloodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/ExaminationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/ExaminationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/MedicalTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/MedicalTestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/PressureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/PressureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/VaccinationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/VaccinationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/BloodRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/BloodRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/ExaminationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/ExaminationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/MedicalTestRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/MedicalTestRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/PressureRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/PressureRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/VaccinationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/VaccinationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/BloodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/BloodService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/BloodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/BloodServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/ExaminationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/ExaminationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/ExaminationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/ExaminationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/MedicalTestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/MedicalTestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/MedicalTestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/MedicalTestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PressureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PressureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PressureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PressureServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/VaccinationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/VaccinationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/VaccinationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/VaccinationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,17 +71,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.HospitalServer [install].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/alex/JavaWorkspace/HospitalApp/HospitalServer&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.HospitalServer [clean].executor": "Run",
+    "Maven.HospitalServer [install].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/alex/JavaWorkspace/HospitalApp/HospitalServer"
   }
-}</component>
+}]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5b354ee7-b7b3-4f2e-9b2b-03c4b7e05a85" name="Changes" comment="" />

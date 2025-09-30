@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface MedicalTestService {
     MedicalTestResponse getById(Long id);
-    MedicalTestResponse add(MedicalTestRequest medicalTestRequest);
+    MedicalTestResponse add(MedicalTestRequest medicalTestRequest, Long personalId);
     Page<MedicalTestResponse> findByPatientId(Long patientId, Pageable pageable);
     Page<MedicalTestResponse> findByPersonalId(Long personalId, Pageable pageable);
 }

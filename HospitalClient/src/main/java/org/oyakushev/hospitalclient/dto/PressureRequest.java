@@ -4,7 +4,6 @@ public class PressureRequest {
     private Double systolic;
     private Double diastolic;
     private Long patientId;
-    private Long personalId;
 
     public Double getSystolic() {
         return systolic;
@@ -28,13 +27,5 @@ public class PressureRequest {
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
-    }
-
-    public Long getPersonalId() {
-        return personalId;
-    }
-
-    public void setPersonalId(Long personalId) {
-        this.personalId = personalId;
     }
 }

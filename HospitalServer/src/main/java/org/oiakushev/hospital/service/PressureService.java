@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface PressureService {
     PressureResponse getById(Long id);
-    PressureResponse add(PressureRequest pressureRequest);
+    PressureResponse add(PressureRequest pressureRequest, Long personalId);
     Page<PressureResponse> findByPatientId(Long patientId, Pageable pageable);
     Page<PressureResponse> findByPersonalId(Long personalId, Pageable pageable);
 }

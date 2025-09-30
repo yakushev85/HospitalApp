@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface BloodService {
     BloodResponse getById(Long id);
-    BloodResponse add(BloodRequest bloodRequest);
+    BloodResponse add(BloodRequest bloodRequest, Long personalId);
     Page<BloodResponse> findByPatientId(Long patientId, Pageable pageable);
     Page<BloodResponse> findByPersonalId(Long personalId, Pageable pageable);
 }

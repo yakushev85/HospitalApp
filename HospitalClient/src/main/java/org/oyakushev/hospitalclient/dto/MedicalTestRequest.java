@@ -4,7 +4,6 @@ public class MedicalTestRequest {
     private String description;
     private Integer result;
     private Long patientId;
-    private Long personalId;
 
     public String getDescription() {
         return description;
@@ -28,13 +27,5 @@ public class MedicalTestRequest {
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
-    }
-
-    public Long getPersonalId() {
-        return personalId;
-    }
-
-    public void setPersonalId(Long personalId) {
-        this.personalId = personalId;
     }
 }

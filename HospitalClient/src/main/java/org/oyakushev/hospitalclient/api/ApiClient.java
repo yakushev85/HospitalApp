@@ -190,7 +190,7 @@ public enum ApiClient {
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PageBlood.class);
     }
 
-    public PageBlood getBloodByPatientId(int patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
+    public PageBlood getBloodByPatientId(long patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
         HttpRequest request = preBuildRequest("api/blood/patients/" + patientId + "?page=" + pageNumber + "&size=" + pageSize)
                 .GET()
                 .build();
@@ -222,7 +222,7 @@ public enum ApiClient {
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PageExamination.class);
     }
 
-    public PageExamination getExaminationByPatientId(int patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
+    public PageExamination getExaminationByPatientId(Long patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
         HttpRequest request = preBuildRequest("api/examinations/patients/" + patientId + "?page=" + pageNumber + "&size=" + pageSize)
                 .GET()
                 .build();
@@ -254,7 +254,7 @@ public enum ApiClient {
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PagePressure.class);
     }
 
-    public PagePressure getPressureByPatientId(int patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
+    public PagePressure getPressureByPatientId(long patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
         HttpRequest request = preBuildRequest("api/pressure/patients/" + patientId + "?page=" + pageNumber + "&size=" + pageSize)
                 .GET()
                 .build();
@@ -286,7 +286,7 @@ public enum ApiClient {
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PageVaccination.class);
     }
 
-    public PageVaccination getVaccinationByPatientId(int patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
+    public PageVaccination getVaccinationByPatientId(long patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
         HttpRequest request = preBuildRequest("api/vaccinations/patients/" + patientId + "?page=" + pageNumber + "&size=" + pageSize)
                 .GET()
                 .build();
@@ -318,7 +318,7 @@ public enum ApiClient {
         return gson.fromJson(sendAndGetBody(request).orElseThrow(), PageMedicalTest.class);
     }
 
-    public PageMedicalTest getMedicalTestByPatientId(int patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
+    public PageMedicalTest getMedicalTestByPatientId(long patientId, int pageNumber, int pageSize) throws IOException, InterruptedException {
         HttpRequest request = preBuildRequest("api/medical_tests/patients/" + patientId + "?page=" + pageNumber + "&size=" + pageSize)
                 .GET()
                 .build();

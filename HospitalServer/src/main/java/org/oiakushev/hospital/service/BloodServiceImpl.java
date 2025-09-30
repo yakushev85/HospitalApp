@@ -28,7 +28,7 @@ public class BloodServiceImpl implements BloodService {
     }
 
     @Override
-    public BloodResponse add(BloodRequest bloodRequest) {
+    public BloodResponse add(BloodRequest bloodRequest, Long personalId) {
         Blood newBlood = new Blood();
 
         newBlood.setHemoglobin(bloodRequest.getHemoglobin());
@@ -37,7 +37,7 @@ public class BloodServiceImpl implements BloodService {
         newBlood.setMeanCorpuscularVolume(bloodRequest.getMeanCorpuscularVolume());
 
         newBlood.setPatient(patientRepository.findById(bloodRequest.getPatientId()).orElseThrow());
-        newBlood.setPersonal(personalRepository.findById(bloodRequest.getPersonalId()).orElseThrow());
+        newBlood.setPersonal(personalRepository.findById(personalId).orElseThrow());
 
         return BloodResponse.from(bloodRepository.save(newBlood));
     }

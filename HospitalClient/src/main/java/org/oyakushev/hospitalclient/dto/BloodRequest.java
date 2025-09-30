@@ -6,7 +6,6 @@ public class BloodRequest {
     private Double meanCorpuscularVolume;
     private Double meanCorpuscularHemoglobin;
     private Long patientId;
-    private Long personalId;
 
     public Double getHemoglobin() {
         return hemoglobin;
@@ -46,13 +45,5 @@ public class BloodRequest {
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
-    }
-
-    public Long getPersonalId() {
-        return personalId;
-    }
-
-    public void setPersonalId(Long personalId) {
-        this.personalId = personalId;
     }
 }

@@ -28,13 +28,13 @@ public class VaccinationServiceImpl implements VaccinationService {
     }
 
     @Override
-    public VaccinationResponse add(VaccinationRequest vaccinationRequest) {
+    public VaccinationResponse add(VaccinationRequest vaccinationRequest, Long personalId) {
         Vaccination vaccination = new Vaccination();
 
         vaccination.setDescription(vaccinationRequest.getDescription());
         vaccination.setEffectiveTime(vaccinationRequest.getEffectiveTime());
         vaccination.setPatient(patientRepository.findById(vaccinationRequest.getPatientId()).orElseThrow());
-        vaccination.setPersonal(personalRepository.findById(vaccinationRequest.getPersonalId()).orElseThrow());
+        vaccination.setPersonal(personalRepository.findById(personalId).orElseThrow());
 
         return VaccinationResponse.from(vaccinationRepository.save(vaccination));
     }

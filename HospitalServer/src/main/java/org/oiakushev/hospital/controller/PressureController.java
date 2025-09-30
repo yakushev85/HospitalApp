@@ -37,8 +37,7 @@ public class PressureController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public PressureResponse add(@RequestBody PressureRequest pressureRequest, HttpServletRequest request) {
-        personalService.auth(request, PersonalRole.Nurse);
-        return pressureService.add(pressureRequest);
+        return pressureService.add(pressureRequest, personalService.auth(request, PersonalRole.Nurse).getId());
     }
 
     @RequestMapping(value = "/patients/{id}", method = RequestMethod.GET)

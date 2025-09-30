@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface VaccinationService {
     VaccinationResponse getById(Long id);
-    VaccinationResponse add(VaccinationRequest vaccinationRequest);
+    VaccinationResponse add(VaccinationRequest vaccinationRequest, Long personalId);
     Page<VaccinationResponse> findByPatientId(Long patientId, Pageable pageable);
     Page<VaccinationResponse> findByPersonalId(Long personalId, Pageable pageable);
 }

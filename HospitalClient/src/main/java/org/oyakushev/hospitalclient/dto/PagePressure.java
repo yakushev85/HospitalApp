@@ -6,7 +6,7 @@ public class PagePressure {
     private int totalPages;
     private int totalElements;
     private int size;
-    private List<PersonalResponse> content;
+    private List<PressureResponse> content;
     private int number;
     private int numberOfElements;
     private boolean first;
@@ -37,11 +37,11 @@ public class PagePressure {
         this.size = size;
     }
 
-    public List<PersonalResponse> getContent() {
+    public List<PressureResponse> getContent() {
         return content;
     }
 
-    public void setContent(List<PersonalResponse> content) {
+    public void setContent(List<PressureResponse> content) {
         this.content = content;
     }
 

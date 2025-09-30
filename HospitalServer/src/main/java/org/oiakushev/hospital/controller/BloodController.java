@@ -37,8 +37,7 @@ public class BloodController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public BloodResponse add(@RequestBody BloodRequest bloodRequest, HttpServletRequest request) {
-        personalService.auth(request, PersonalRole.Doctor);
-        return bloodService.add(bloodRequest);
+        return bloodService.add(bloodRequest, personalService.auth(request, PersonalRole.Doctor).getId());
     }
 
     @RequestMapping(value = "/patients/{id}", method = RequestMethod.GET)
