@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.PatientController">
-    <TabPane tabClosingPolicy="UNAVAILABLE">
+<VBox prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.PatientController">
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <Tab text="General">
             <VBox>
                 <Label fx:id="idLabel" text="#ID" textAlignment="CENTER">
@@ -147,7 +147,7 @@
                         </Button>
                     </children>
                 </HBox>
-                <TableView fx:id="bloodTableView">
+                <TableView fx:id="bloodTableView" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -174,7 +174,7 @@
                                 <PropertyValueFactory property="meanCorpuscularHemoglobin" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Created At">
+                        <TableColumn prefWidth="200.0" text="Created At">
                             <cellValueFactory>
                                 <PropertyValueFactory property="createdAt" />
                             </cellValueFactory>
@@ -229,7 +229,7 @@
                         </Button>
                     </children>
                 </HBox>
-                <TableView fx:id="examinationTableView">
+                <TableView fx:id="examinationTableView" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -246,7 +246,7 @@
                                 <PropertyValueFactory property="diagnosis" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Created At">
+                        <TableColumn prefWidth="200.0" text="Created At">
                             <cellValueFactory>
                                 <PropertyValueFactory property="createdAt" />
                             </cellValueFactory>
@@ -301,7 +301,7 @@
                         </Button>
                     </children>
                 </HBox>
-                <TableView fx:id="medicalTestTableView">
+                <TableView fx:id="medicalTestTableView" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -315,10 +315,10 @@
                         </TableColumn>
                         <TableColumn prefWidth="100.0" text="Result">
                             <cellValueFactory>
-                                <PropertyValueFactory property="result" />
+                                <PropertyValueFactory property="resultMessage" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Created At">
+                        <TableColumn prefWidth="200.0" text="Created At">
                             <cellValueFactory>
                                 <PropertyValueFactory property="createdAt" />
                             </cellValueFactory>
@@ -373,7 +373,7 @@
                         </Button>
                     </children>
                 </HBox>
-                <TableView fx:id="pressureTableView">
+                <TableView fx:id="pressureTableView" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -390,7 +390,7 @@
                                 <PropertyValueFactory property="diastolic" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Created At">
+                        <TableColumn prefWidth="200.0" text="Created At">
                             <cellValueFactory>
                                 <PropertyValueFactory property="createdAt" />
                             </cellValueFactory>
@@ -445,7 +445,7 @@
                         </Button>
                     </children>
                 </HBox>
-                <TableView fx:id="vaccinationTableView">
+                <TableView fx:id="vaccinationTableView" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn prefWidth="75.0" text="ID">
                             <cellValueFactory>
@@ -462,7 +462,7 @@
                                 <PropertyValueFactory property="effectiveTime" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn prefWidth="100.0" text="Created At">
+                        <TableColumn prefWidth="200.0" text="Created At">
                             <cellValueFactory>
                                 <PropertyValueFactory property="createdAt" />
                             </cellValueFactory>

@@ -1,4 +1,4 @@
-module org.oyakushev.hospital.client.hospitalclient {
+module org.oyakushev.hospitalclient {
     requires javafx.controls;
     requires javafx.fxml;
 

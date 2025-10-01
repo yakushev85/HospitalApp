@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.HomeController">
+<VBox alignment="CENTER" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.oyakushev.hospitalclient.controller.HomeController">
 
    <children>
-      <TabPane tabClosingPolicy="UNAVAILABLE">
+      <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <tabs>
           <Tab text="Patients">
             <content>
@@ -40,7 +40,7 @@
                           </Button>
                       </children>
                   </HBox>
-                  <TableView fx:id="patientTable">
+                  <TableView fx:id="patientTable" VBox.vgrow="ALWAYS">
                       <columns>
                           <TableColumn prefWidth="75.0" text="ID">
                               <cellValueFactory>
@@ -130,7 +130,7 @@
                             </Button>
                         </children>
                     </HBox>
-                    <TableView fx:id="personalTable">
+                    <TableView fx:id="personalTable" VBox.vgrow="ALWAYS">
                         <columns>
                             <TableColumn prefWidth="75.0" text="ID">
                                 <cellValueFactory>

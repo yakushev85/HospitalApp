@@ -6,6 +6,7 @@ public class MedicalTestResponse {
     private Long id;
     private String description;
     private Integer result;
+    private String resultMessage;
     private Long patientId;
     private Long personalId;
     private Date createdAt;
@@ -56,5 +57,25 @@ public class MedicalTestResponse {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getResultMessage() {
+        if (resultMessage == null) {
+            if (result == null) {
+                resultMessage = "Undefined";
+            } else if (result == 0) {
+                resultMessage = "Unknown";
+            } else if (result > 0) {
+                resultMessage = "Positive";
+            } else {
+                resultMessage = "Negative";
+            }
+        }
+
+        return resultMessage;
+    }
+
+    public void setResultMessage(String resultMessage) {
+        this.resultMessage = resultMessage;
     }
 }
