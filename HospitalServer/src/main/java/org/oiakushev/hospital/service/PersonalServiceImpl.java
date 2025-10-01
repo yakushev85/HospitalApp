@@ -2,6 +2,9 @@ package org.oiakushev.hospital.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.oiakushev.hospital.UserIsLockedException;
+import org.oiakushev.hospital.UserNotFoundException;
+import org.oiakushev.hospital.WrongPasswordException;
 import org.oiakushev.hospital.dto.AuthRequest;
 import org.oiakushev.hospital.dto.AuthResponse;
 import org.oiakushev.hospital.dto.ChangePasswordRequest;
@@ -110,18 +113,19 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    public AuthResponse loginUser(AuthRequest authRequest, HttpServletRequest request, HttpServletResponse response) {
+    public AuthResponse loginUser(AuthRequest authRequest, HttpServletRequest request, HttpServletResponse response)
+            throws UserNotFoundException, WrongPasswordException, UserIsLockedException {
         Personal resolvedPersonal = findByUsername(authRequest.getUsername());
 
         if (resolvedPersonal != null) {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
             if (!passwordEncoder.matches(authRequest.getPassword(), resolvedPersonal.getPassword())) {
-                throw new IllegalArgumentException("Wrong password.");
+                throw new WrongPasswordException();
             }
 
             if (resolvedPersonal.getRole() < 0) {
-                throw new IllegalArgumentException("User is locked.");
+                throw new UserIsLockedException();
             }
 
             request.setAttribute("user", resolvedPersonal.getUsername());
@@ -136,7 +140,7 @@ public class PersonalServiceImpl implements PersonalService {
 
             return authResponse;
         } else {
-            throw new IllegalArgumentException("Wrong username.");
+            throw new UserNotFoundException();
         }
     }
 

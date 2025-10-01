@@ -2,6 +2,9 @@ package org.oiakushev.hospital.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.oiakushev.hospital.UserIsLockedException;
+import org.oiakushev.hospital.UserNotFoundException;
+import org.oiakushev.hospital.WrongPasswordException;
 import org.oiakushev.hospital.dto.AuthRequest;
 import org.oiakushev.hospital.dto.AuthResponse;
 import org.oiakushev.hospital.dto.ChangePasswordRequest;
@@ -24,7 +27,8 @@ public interface PersonalService {
     Personal findByUsername(String username);
     void logout(HttpServletRequest request);
     Personal auth(HttpServletRequest request, PersonalRole personalRole);
-    AuthResponse loginUser(AuthRequest authRequest, HttpServletRequest request, HttpServletResponse response);
+    AuthResponse loginUser(AuthRequest authRequest, HttpServletRequest request, HttpServletResponse response)
+            throws UserNotFoundException, WrongPasswordException, UserIsLockedException;
     void changePassword(ChangePasswordRequest changePasswordRequest, HttpServletRequest request);
     List<Personal> search(String searchText);
 }

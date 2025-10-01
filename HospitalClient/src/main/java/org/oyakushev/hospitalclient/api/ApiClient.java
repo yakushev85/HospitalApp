@@ -60,9 +60,11 @@ public enum ApiClient {
             response.headers().firstValue(AUTH_HEADER).ifPresent((value) -> authHeaderValue = value);
 
             return Optional.of(response.body());
-        } else if (response.statusCode() == 400) {
-            // TODO cast error response to exception
-            return Optional.empty();
+        } else if (response.statusCode() >= 400 && response.statusCode() < 500) {
+            MessageResponse errorMessageResponse =
+                    gson.fromJson(response.body(), MessageResponse.class);
+
+            throw new IOException(errorMessageResponse.getMessage());
         } else {
             return Optional.empty();
         }
