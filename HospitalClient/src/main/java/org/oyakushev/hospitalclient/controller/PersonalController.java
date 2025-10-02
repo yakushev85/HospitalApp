@@ -21,6 +21,7 @@ public class PersonalController {
     public ComboBox<String> roleCombo;
     public Button saveButton;
     public Button cancelButton;
+    public Label idLabel;
 
     public void initialize() {
         roleCombo.setItems(FXCollections.observableArrayList(
@@ -51,6 +52,7 @@ public class PersonalController {
             @Override
             protected void succeeded() {
                 PersonalResponse personalResponse = getValue();
+                idLabel.setText("#" + personalResponse.getId());
                 usernameField.setText(personalResponse.getUsername());
                 firstNameField.setText(personalResponse.getFirstName());
                 lastNameField.setText(personalResponse.getLastName());

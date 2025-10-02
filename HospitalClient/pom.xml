@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.oyakushev.hospital.client</groupId>
+  <groupId>org.oyakushev</groupId>
   <artifactId>HospitalClient</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>HospitalClient</name>
@@ -69,10 +69,10 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>org.oyakushev.hospitalclient.HospitalApplication</mainClass>
-              <launcher>app</launcher>
-              <jlinkZipName>app</jlinkZipName>
-              <jlinkImageName>app</jlinkImageName>
+              <mainClass>org.oyakushev.hospitalclient.Launcher</mainClass>
+              <launcher>Hospital</launcher>
+              <jlinkZipName>Hospital</jlinkZipName>
+              <jlinkImageName>Hospital</jlinkImageName>
               <noManPages>true</noManPages>
               <stripDebug>true</stripDebug>
               <noHeaderFiles>true</noHeaderFiles>

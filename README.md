@@ -1,18 +1,20 @@
 # HospitalSite
 
-Demo project was created using Java FX, Spring Boot, MySQL and Docker.
+Demo project was created using Java FX, Spring Boot, MySQL, Maven and Docker.
 
 ## Step 1
 
-Compile jars using `mvn install`.
+Compile server using `mvn install` in `HospitalServer` folder.
 
 ## Step 2
 
 Run server using `docker compose up`.
 
-## Test
+## Step 3
 
-Open jar file in client folder
+Compile client using `mvn javafx:jlink` or run `mvn javafx:run` from `HospitalClient` folder.
+
+## Additional information
 
 Swagger documentation: http://localhost:8080/swagger-ui/index.html
 
