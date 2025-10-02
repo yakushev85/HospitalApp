@@ -1,4 +1,4 @@
-# HospitalSite
+# Hospital Application
 
 Demo project was created using Java FX, Spring Boot, MySQL, Maven and Docker.
 
