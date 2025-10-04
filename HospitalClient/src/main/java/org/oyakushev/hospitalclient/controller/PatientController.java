@@ -28,6 +28,7 @@ public class PatientController {
     public Button newBloodButton;
     public TableView<BloodResponse> bloodTableView;
     public Label bloodPageLabel;
+    public ComboBox<Integer> bloodPageSizeCombo;
 
     private int pageBloodNumber = 1;
     private int pageBloodSize = 10;
@@ -37,6 +38,7 @@ public class PatientController {
     public Button newExaminationButton;
     public TableView<ExaminationResponse> examinationTableView;
     public Label examinationPageLabel;
+    public ComboBox<Integer> examinationPageSizeCombo;
 
     private int pageExaminationNumber = 1;
     private int pageExaminationSize = 10;
@@ -46,6 +48,7 @@ public class PatientController {
     public Button newMedicalTestButton;
     public TableView<MedicalTestResponse> medicalTestTableView;
     public Label medicalTestPageLabel;
+    public ComboBox<Integer> medicalTestPageSizeCombo;
 
     private int pageMedicalTestNumber = 1;
     private int pageMedicalTestSize = 10;
@@ -55,6 +58,7 @@ public class PatientController {
     public Button newPressureButton;
     public TableView<PressureResponse> pressureTableView;
     public Label pressurePageLabel;
+    public ComboBox<Integer> pressurePageSizeCombo;
 
     private int pagePressureNumber = 1;
     private int pagePressureSize = 10;
@@ -64,6 +68,7 @@ public class PatientController {
     public Button newVaccinationButton;
     public TableView<VaccinationResponse> vaccinationTableView;
     public Label vaccinationPageLabel;
+    public ComboBox<Integer> vaccinationPageSizeCombo;
 
     private int pageVaccinationNumber = 1;
     private int pageVaccinationSize = 10;
@@ -74,6 +79,21 @@ public class PatientController {
         checkRole(HospitalApplication.getInstance().getPersonalRole());
 
         loadGeneralData();
+
+        bloodPageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        bloodPageSizeCombo.setValue(pageBloodSize);
+
+        examinationPageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        examinationPageSizeCombo.setValue(pageExaminationSize);
+
+        medicalTestPageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        medicalTestPageSizeCombo.setValue(pageMedicalTestSize);
+
+        pressurePageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        pressurePageSizeCombo.setValue(pagePressureSize);
+
+        vaccinationPageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        vaccinationPageSizeCombo.setValue(pageVaccinationSize);
     }
 
     private void loadGeneralData() {
@@ -244,6 +264,7 @@ public class PatientController {
 
             @Override
             protected void succeeded() {
+                totalBloodPages = getValue().getTotalPages();
                 bloodTableView.setItems(FXCollections.observableArrayList(getValue().getContent()));
                 newBloodButton.setDisable(false);
                 bloodPageLabel.setText(pageBloodNumber + " of " + totalBloodPages + " page");
@@ -313,6 +334,7 @@ public class PatientController {
 
             @Override
             protected void succeeded() {
+                totalExaminationPages = getValue().getTotalPages();
                 examinationTableView.setItems(FXCollections.observableArrayList(getValue().getContent()));
                 newExaminationButton.setDisable(false);
                 examinationPageLabel.setText(pageExaminationNumber + " of " + totalExaminationPages + " page");
@@ -382,6 +404,7 @@ public class PatientController {
 
             @Override
             protected void succeeded() {
+                totalMedicalTestPages = getValue().getTotalPages();
                 medicalTestTableView.setItems(FXCollections.observableArrayList(getValue().getContent()));
                 newMedicalTestButton.setDisable(false);
                 medicalTestPageLabel.setText(pageMedicalTestNumber + " of " + totalMedicalTestPages + " page");
@@ -451,6 +474,7 @@ public class PatientController {
 
             @Override
             protected void succeeded() {
+                totalPressurePages = getValue().getTotalPages();
                 pressureTableView.setItems(FXCollections.observableArrayList(getValue().getContent()));
                 newPressureButton.setDisable(false);
                 pressurePageLabel.setText(pagePressureNumber + " of " + totalPressurePages + " page");
@@ -520,6 +544,7 @@ public class PatientController {
 
             @Override
             protected void succeeded() {
+                totalVaccinationPages = getValue().getTotalPages();
                 vaccinationTableView.setItems(FXCollections.observableArrayList(getValue().getContent()));
                 newVaccinationButton.setDisable(false);
                 vaccinationPageLabel.setText(pageVaccinationNumber + " of " + totalVaccinationPages + " page");
@@ -569,5 +594,36 @@ public class PatientController {
 
             loadVaccinationData();
         }
+    }
+
+    public void onBloodPageSize(ActionEvent actionEvent) {
+        pageBloodSize = bloodPageSizeCombo.getValue();
+        pageBloodNumber = 1;
+        loadBloodData();
+    }
+
+    public void onExaminationPageSize(ActionEvent actionEvent) {
+        pageExaminationSize = examinationPageSizeCombo.getValue();
+        pageExaminationNumber = 1;
+        loadExaminationData();
+    }
+
+    public void onMedicalTestPageSize(ActionEvent actionEvent) {
+        pageMedicalTestSize = medicalTestPageSizeCombo.getValue();
+        pageMedicalTestNumber = 1;
+        loadMedicalTestData();
+    }
+
+    public void onPressurePageSize(ActionEvent actionEvent) {
+        pagePressureSize = pressurePageSizeCombo.getValue();
+        pagePressureNumber = 1;
+        loadPressureData();
+    }
+
+
+    public void onVaccinationPageSize(ActionEvent actionEvent) {
+        pageVaccinationSize = vaccinationPageSizeCombo.getValue();
+        pageVaccinationNumber = 1;
+        loadVaccinationData();
     }
 }

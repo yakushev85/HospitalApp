@@ -42,6 +42,8 @@ public class HomeController {
     public Button previousPatientPageButton;
     public Button nextPatientPageButton;
     public Button lastPatientPageButton;
+    public ComboBox<Integer> patientPageSizeCombo;
+    public ComboBox<Integer> personalPageSizeCombo;
 
     private int pagePatientsNumber = 1;
     private int pagePatientsSize = 10;
@@ -64,6 +66,12 @@ public class HomeController {
 
         profileRole.setText("Role: " + HospitalApplication.getInstance().getPersonalRole());
         profileUsername.setText(HospitalApplication.getInstance().getUsername());
+
+        patientPageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        patientPageSizeCombo.setValue(pagePatientsSize);
+
+        personalPageSizeCombo.setItems(FXCollections.observableArrayList(10, 15, 20, 25, 30));
+        personalPageSizeCombo.setValue(pagePersonalSize);
     }
 
     private void setControlsDisable(boolean isDisable) {
@@ -372,5 +380,17 @@ public class HomeController {
 
             loadPersonal();
         }
+    }
+
+    public void onPatientPageSize(ActionEvent actionEvent) {
+        pagePatientsSize = patientPageSizeCombo.getValue();
+        pagePatientsNumber = 1;
+        loadPatients();
+    }
+
+    public void onPersonalPageSize(ActionEvent actionEvent) {
+        pagePersonalSize = personalPageSizeCombo.getValue();
+        pagePersonalNumber = 1;
+        loadPersonal();
     }
 }

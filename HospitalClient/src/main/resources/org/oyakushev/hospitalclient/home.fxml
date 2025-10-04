@@ -96,6 +96,16 @@
                                   <Insets bottom="10.0" left="10.0" />
                               </HBox.margin>
                           </Button>
+                          <Label text="Page Size:">
+                              <HBox.margin>
+                                  <Insets left="10.0" top="4.0" />
+                              </HBox.margin>
+                          </Label>
+                          <ComboBox fx:id="patientPageSizeCombo" onAction="#onPatientPageSize">
+                              <HBox.margin>
+                                  <Insets bottom="10.0" left="10.0" />
+                              </HBox.margin>
+                          </ComboBox>
                       </children>
                   </HBox>
               </VBox>
@@ -186,6 +196,16 @@
                                     <Insets bottom="10.0" left="10.0" />
                                 </HBox.margin>
                             </Button>
+                            <Label text="Page Size:">
+                                <HBox.margin>
+                                    <Insets left="10.0" top="4.0" />
+                                </HBox.margin>
+                            </Label>
+                            <ComboBox fx:id="personalPageSizeCombo" onAction="#onPersonalPageSize">
+                                <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" />
+                                </HBox.margin>
+                            </ComboBox>
                         </children>
                     </HBox>
                 </VBox>
