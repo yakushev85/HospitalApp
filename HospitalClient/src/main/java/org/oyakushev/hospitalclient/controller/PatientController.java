@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.*;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.*;
 
 import java.time.LocalDate;
@@ -103,7 +102,7 @@ public class PatientController {
             @Override
             protected PatientResponse call() throws Exception {
                 Long id = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.getPatient(id);
+                return HospitalApplication.getInstance().getPatientApiService().getById(id);
             }
 
             @Override
@@ -223,7 +222,7 @@ public class PatientController {
             @Override
             protected PatientResponse call() throws Exception {
                 Long id = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.updatePatient(id, patientRequest);
+                return HospitalApplication.getInstance().getPatientApiService().update(id, patientRequest);
             }
 
             @Override
@@ -259,7 +258,8 @@ public class PatientController {
             @Override
             protected PageBlood call() throws Exception {
                 Long patientId = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.getBloodByPatientId(patientId, pageBloodNumber-1, pageBloodSize);
+                return HospitalApplication.getInstance().getBloodApiService()
+                        .getByPatientId(patientId, pageBloodNumber-1, pageBloodSize);
             }
 
             @Override
@@ -329,7 +329,8 @@ public class PatientController {
             @Override
             protected PageExamination call() throws Exception {
                 Long patientId = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.getExaminationByPatientId(patientId, pageExaminationNumber-1, pageExaminationSize);
+                return HospitalApplication.getInstance().getExaminationApiService()
+                        .getByPatientId(patientId, pageExaminationNumber-1, pageExaminationSize);
             }
 
             @Override
@@ -399,7 +400,8 @@ public class PatientController {
             @Override
             protected PageMedicalTest call() throws Exception {
                 Long patientId = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.getMedicalTestByPatientId(patientId, pageMedicalTestNumber-1, pageMedicalTestSize);
+                return HospitalApplication.getInstance().getMedicalTestApiService()
+                        .getByPatientId(patientId, pageMedicalTestNumber-1, pageMedicalTestSize);
             }
 
             @Override
@@ -469,7 +471,8 @@ public class PatientController {
             @Override
             protected PagePressure call() throws Exception {
                 Long patientId = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.getPressureByPatientId(patientId, pagePressureNumber-1, pagePressureSize);
+                return HospitalApplication.getInstance().getPressureApiService()
+                        .getByPatientId(patientId, pagePressureNumber-1, pagePressureSize);
             }
 
             @Override
@@ -539,7 +542,8 @@ public class PatientController {
             @Override
             protected PageVaccination call() throws Exception {
                 Long patientId = HospitalApplication.getInstance().getPatientId();
-                return ApiClient.Instance.getVaccinationByPatientId(patientId, pageVaccinationNumber-1, pageVaccinationSize);
+                return HospitalApplication.getInstance().getVaccinationApiService()
+                        .getByPatientId(patientId, pageVaccinationNumber-1, pageVaccinationSize);
             }
 
             @Override

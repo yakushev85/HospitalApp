@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.AuthRequest;
 import org.oyakushev.hospitalclient.dto.AuthResponse;
 import org.oyakushev.hospitalclient.dto.MessageResponse;
@@ -38,7 +37,7 @@ public class LoginController {
         Task<AuthResponse> loginTask = new Task<>() {
             @Override
             protected AuthResponse call() throws Exception {
-                return ApiClient.Instance.loginUser(authRequest);
+                return HospitalApplication.getInstance().getAuthApiService().loginUser(authRequest);
             }
 
             @Override
@@ -65,7 +64,7 @@ public class LoginController {
         Task<MessageResponse> checkStatusTask = new Task<>() {
             @Override
             protected MessageResponse call() throws Exception {
-                return ApiClient.Instance.getStatus();
+                return HospitalApplication.getInstance().getAuthApiService().getStatus();
             }
 
             @Override

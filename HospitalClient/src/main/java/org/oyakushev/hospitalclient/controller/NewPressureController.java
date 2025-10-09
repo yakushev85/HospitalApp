@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.PressureRequest;
 import org.oyakushev.hospitalclient.dto.PressureResponse;
 
@@ -66,7 +65,7 @@ public class NewPressureController {
                 pressureRequest.setDiastolic(Double.parseDouble(diastolicField.getText()));
                 pressureRequest.setPatientId(HospitalApplication.getInstance().getPatientId());
 
-                return ApiClient.Instance.createPressure(pressureRequest);
+                return HospitalApplication.getInstance().getPressureApiService().create(pressureRequest);
             }
 
             @Override

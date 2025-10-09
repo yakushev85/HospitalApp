@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.ExaminationRequest;
 import org.oyakushev.hospitalclient.dto.ExaminationResponse;
 
@@ -52,7 +51,7 @@ public class NewExaminationController {
                 examinationRequest.setDiagnosis(diagnosisArea.getText());
                 examinationRequest.setPatientId(HospitalApplication.getInstance().getPatientId());
 
-                return ApiClient.Instance.createExamination(examinationRequest);
+                return HospitalApplication.getInstance().getExaminationApiService().create(examinationRequest);
             }
 
             @Override

@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.VaccinationRequest;
 import org.oyakushev.hospitalclient.dto.VaccinationResponse;
 
@@ -60,7 +59,7 @@ public class NewVaccinationController {
                 vaccinationRequest.setEffectiveTime(Integer.parseInt(effectiveTimeField.getText()));
                 vaccinationRequest.setPatientId(HospitalApplication.getInstance().getPatientId());
 
-                return ApiClient.Instance.createVaccination(vaccinationRequest);
+                return HospitalApplication.getInstance().getVaccinationApiService().create(vaccinationRequest);
             }
 
             @Override

@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.PatientRequest;
 import org.oyakushev.hospitalclient.dto.PatientResponse;
 
@@ -94,7 +93,7 @@ public class NewPatientController {
         Task<PatientResponse> savePatientTask = new Task<>() {
             @Override
             protected PatientResponse call() throws Exception {
-                return ApiClient.Instance.createPatient(patientRequest);
+                return HospitalApplication.getInstance().getPatientApiService().create(patientRequest);
             }
 
             @Override

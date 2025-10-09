@@ -5,7 +5,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.PersonalRequest;
 import org.oyakushev.hospitalclient.dto.PersonalResponse;
 import org.oyakushev.hospitalclient.dto.PersonalRole;
@@ -46,7 +45,7 @@ public class PersonalController {
             @Override
             protected PersonalResponse call() throws Exception {
                 Long id = HospitalApplication.getInstance().getPersonalId();
-                return ApiClient.Instance.getPersonal(id);
+                return HospitalApplication.getInstance().getPersonalApiService().getById(id);
             }
 
             @Override
@@ -92,7 +91,7 @@ public class PersonalController {
                 PersonalRole personalRole = PersonalRole.valueOf(roleCombo.getValue());
                 personalRequest.setRole(personalRole.getIndex());
 
-                return ApiClient.Instance.updatePersonal(id, personalRequest);
+                return HospitalApplication.getInstance().getPersonalApiService().update(id, personalRequest);
             }
 
             @Override

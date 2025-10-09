@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.BloodRequest;
 import org.oyakushev.hospitalclient.dto.BloodResponse;
 
@@ -94,7 +93,7 @@ public class NewBloodController {
                 bloodRequest.setMeanCorpuscularHemoglobin(Double.parseDouble(mchField.getText()));
                 bloodRequest.setPatientId(HospitalApplication.getInstance().getPatientId());
 
-                return ApiClient.Instance.createBlood(bloodRequest);
+                return HospitalApplication.getInstance().getBloodApiService().create(bloodRequest);
             }
 
             @Override

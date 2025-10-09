@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.MedicalTestRequest;
 import org.oyakushev.hospitalclient.dto.MedicalTestResponse;
 
@@ -62,7 +61,7 @@ public class NewMedicalTestController {
                 }
                 medicalTestRequest.setPatientId(HospitalApplication.getInstance().getPatientId());
 
-                return ApiClient.Instance.createMedicalTest(medicalTestRequest);
+                return HospitalApplication.getInstance().getMedicalTestApiService().create(medicalTestRequest);
             }
 
             @Override

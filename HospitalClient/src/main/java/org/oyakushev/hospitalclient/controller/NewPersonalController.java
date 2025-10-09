@@ -6,7 +6,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.PersonalRequest;
 import org.oyakushev.hospitalclient.dto.PersonalResponse;
 import org.oyakushev.hospitalclient.dto.PersonalRole;
@@ -95,7 +94,7 @@ public class NewPersonalController {
         Task<PersonalResponse> savePersonalTask = new Task<> () {
             @Override
             protected PersonalResponse call() throws Exception {
-                return ApiClient.Instance.createPersonal(personalRequest);
+                return HospitalApplication.getInstance().getPersonalApiService().create(personalRequest);
             }
 
             @Override

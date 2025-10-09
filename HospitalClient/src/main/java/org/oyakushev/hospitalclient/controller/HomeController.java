@@ -6,7 +6,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.*;
 
 public class HomeController {
@@ -103,7 +102,8 @@ public class HomeController {
 
             @Override
             protected PagePersonal call() throws Exception {
-                return ApiClient.Instance.getPersonal(pagePersonalNumber - 1, pagePersonalSize);
+                return HospitalApplication.getInstance().getPersonalApiService()
+                        .getPage(pagePersonalNumber - 1, pagePersonalSize);
             }
 
             @Override
@@ -129,7 +129,8 @@ public class HomeController {
         Task<PagePatients> loadPatientsTask = new Task<PagePatients>() {
             @Override
             protected PagePatients call() throws Exception {
-                return ApiClient.Instance.getPatients(pagePatientsNumber -1, pagePatientsSize);
+                return HospitalApplication.getInstance().getPatientApiService()
+                        .getPage(pagePatientsNumber -1, pagePatientsSize);
             }
 
             @Override
@@ -190,7 +191,7 @@ public class HomeController {
 
             @Override
             protected MessageResponse call() throws Exception {
-                return ApiClient.Instance.logout();
+                return HospitalApplication.getInstance().getAuthApiService().logout();
             }
 
             @Override
@@ -254,7 +255,7 @@ public class HomeController {
 
             @Override
             protected SearchPatientResultsResponse call() throws Exception {
-                return ApiClient.Instance.searchPatients(searchText);
+                return HospitalApplication.getInstance().getPatientApiService().search(searchText);
             }
 
             @Override
@@ -294,7 +295,7 @@ public class HomeController {
 
             @Override
             protected SearchPersonalResultsResponse call() throws Exception {
-                return ApiClient.Instance.searchPersonal(searchText);
+                return HospitalApplication.getInstance().getPersonalApiService().search(searchText);
             }
 
             @Override

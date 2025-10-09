@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import org.oyakushev.hospitalclient.HospitalApplication;
-import org.oyakushev.hospitalclient.api.ApiClient;
 import org.oyakushev.hospitalclient.dto.ChangePasswordRequest;
 import org.oyakushev.hospitalclient.dto.MessageResponse;
 
@@ -55,7 +54,8 @@ public class ChangePassController {
                 ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest();
                 changePasswordRequest.setNewPassword(newPassword);
                 changePasswordRequest.setOldPassword(oldPassword);
-                return ApiClient.Instance.changePassword(changePasswordRequest);
+
+                return HospitalApplication.getInstance().getAuthApiService().changePassword(changePasswordRequest);
             }
 
             @Override
