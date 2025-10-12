@@ -3,7 +3,6 @@ package org.oyakushev.hospitalclient.dto;
 public class AuthResponse {
     private Long id;
     private String username;
-    private String token;
     private String role;
 
     public Long getId() {
@@ -20,14 +19,6 @@ public class AuthResponse {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getRole() {

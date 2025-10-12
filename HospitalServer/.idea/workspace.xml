@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b354ee7-b7b3-4f2e-9b2b-03c4b7e05a85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/UserIsLockedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/UserNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/WrongPasswordException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/dto/AuthResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/oiakushev/hospital/service/PersonalServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

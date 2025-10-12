@@ -135,7 +135,6 @@ public class PersonalServiceImpl implements PersonalService {
             AuthResponse authResponse = new AuthResponse();
             authResponse.setId(resolvedPersonal.getId());
             authResponse.setUsername(resolvedPersonal.getUsername());
-            authResponse.setToken(token);
             authResponse.setRole(PersonalRole.fromIndex(resolvedPersonal.getRole()).toString());
 
             return authResponse;

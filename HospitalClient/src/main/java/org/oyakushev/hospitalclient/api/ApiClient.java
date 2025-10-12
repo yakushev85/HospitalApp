@@ -14,8 +14,8 @@ import java.util.Optional;
 public enum ApiClient {
     Instance;
 
-    public static final String BASE_URL = "http://localhost:8080/";
-    public static final Duration DEFAULT_TIMEOUT = Duration.ofMinutes(2);
+    private static final String BASE_URL = "http://localhost:8080/";
+    private static final Duration DEFAULT_TIMEOUT = Duration.ofMinutes(1);
 
     private static final String AUTH_HEADER = "Authorization";
 
@@ -44,12 +44,9 @@ public enum ApiClient {
     }
 
     Optional<String> sendAndGetBody(HttpRequest request) throws IOException, InterruptedException {
-        System.out.println("\nRequest\n" + request.method() + "\n" + request.uri().toString()
-                + "\nAuth header: " + request.headers().firstValue(AUTH_HEADER));
+        System.out.println("\nRequest\n" + request.method() + "\n" + request.uri().toString());
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("\nResponse\n" + response.statusCode()
-                + "\nAuth header: " + response.headers().firstValue(AUTH_HEADER) +
-                "\n" + response.body());
+        System.out.println("\nResponse\n" + response.statusCode() + "\n" + response.body());
 
         if (response.body() != null && response.statusCode() == 200) {
             response.headers().firstValue(AUTH_HEADER).ifPresent((value) -> authHeaderValue = value);
